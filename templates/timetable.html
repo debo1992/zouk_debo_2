@@ -56,22 +56,22 @@
         <thead>
             <tr>
                 <th>Date</th>
-                <th>Class 7 p.m.</th>
-                <th>Class 8 p.m.</th>
-                <th>Class 9 p.m.</th>
+                <th>Zouk Fundamentals <br> 7 p.m. - 8 p.m.</th>
+                <th>Level 2 <br> 8 p.m. - 9 p.m.</th>
+                <th>Level 3 <br> 9 p.m. - 10 p.m.</th>
             </tr>
         </thead>
         <tbody>
         {% for date in dates %}
             <tr>
-                <td>{{ date }}</td>
+                <td>{{ date.pretty }}</td>
                 {% for slot in ["19:00", "20:00", "21:00"] %}
                     <td>
-                        {% if (date, slot) in bookings %}
-                            {% set key = date ~ ' ' ~ slot %}
+                        {% if (date.raw, slot) in bookings %}
+                            {% set key = date.raw ~ ' ' ~ slot %}
                             {% if cancellable.get(key) %}
                                 <form method="POST" action="{{ url_for('cancel_class') }}">
-                                    <input type="hidden" name="date" value="{{ date }}">
+                                    <input type="hidden" name="date" value="{{ date.raw }}">
                                     <input type="hidden" name="time" value="{{ slot }}">
                                     <button type="submit" class="cancel-btn">Cancel</button>
                                 </form>
@@ -80,7 +80,7 @@
                             {% endif %}
                         {% elif remaining_classes > 0 %}
                             <form method="POST" action="{{ url_for('book_class') }}">
-                                <input type="hidden" name="date" value="{{ date }}">
+                                <input type="hidden" name="date" value="{{ date.raw }}">
                                 <input type="hidden" name="time" value="{{ slot }}">
                                 <button type="submit">Book</button>
                             </form>

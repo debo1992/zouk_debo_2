@@ -59,12 +59,12 @@
                 <div class="hidden md:flex items-center space-x-8">
                     <a href="{{ url_for('home') }}" class="nav-link px-3 py-2 text-sm font-medium text-lime-500 hover:text-yellow-500">Home</a>
                     <a href="#benefits" class="nav-link px-3 py-2 text-sm font-medium text-lime-500 hover:text-yellow-500">About</a>
-                    <a href="#" class="nav-link px-3 py-2 text-sm font-medium text-lime-500 hover:text-yellow-500">Timetable</a>
+                    <a href="{{ url_for('timetable') }}" class="nav-link px-3 py-2 text-sm font-medium text-lime-500 hover:text-yellow-500">Timetable</a>
                     <a href="{{ url_for('pricing') }}" class="nav-link px-3 py-2 text-sm font-medium text-lime-500 hover:text-yellow-500">Plans & Pricing</a>
                     <a href="#upcoming-events" class="nav-link px-3 py-2 text-sm font-medium text-lime-500 hover:text-yellow-500">Events</a>
                     
                     <a href="#footer" class="nav-link px-3 py-2 text-sm font-medium text-lime-500 hover:text-yellow-500">Contact</a>
-                    <a href="#" class="px-4 py-2 text-sm font-medium text-black bg-yellow-500 rounded-md hover:bg-lime-500 transition duration-300">Login </a>
+                    <a href="{{ url_for('login') }}" class="px-4 py-2 text-sm font-medium text-black bg-yellow-500 rounded-md hover:bg-lime-500 transition duration-300">Login </a>
                 </div>
                 <div class="md:hidden flex items-center">
                     <button class="text-gray-500 hover:text-gray-900 focus:outline-none">
@@ -88,7 +88,7 @@
                     </div>
                 </div>
                 <div class="md:w-1/2" data-aos="fade-left">
-                    <img src="http://static.photos/people/1200x630/1" alt="Zouk dancers" class="rounded-lg shadow-2xl">
+                    <img src="{{ url_for('static', filename='class_photo.jpg') }}" alt="Zouk dancers" class="rounded-lg shadow-2xl">
                 </div>
             </div>
         </div>
@@ -100,55 +100,39 @@
             <div class="text-center mb-16">
                 <h2 class="text-3xl font-bold text-lime-500 mb-4">Why Dance With Us?</h2>
                 <section class="bg-gradient-to-b from-gray-900 to-gray-800 text-gray-100 py-20">
-  <div class="max-w-4xl mx-auto px-6 text-center space-y-8">
-    <!-- Heading -->
-    <h2 class="text-4xl md:text-5xl font-extrabold tracking-tight text-lime-400">
-      ✨ Meet Matthew Chen ✨
+  <h2 class="text-4xl md:text-5xl font-extrabold tracking-tight text-lime-400">
+        ✨ Meet Matthew Chen ✨
     </h2>
+    <div class="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 items-center gap-12">
+    
+    <!-- LEFT: TEXT -->
+    <div class="space-y-8 text-center md:text-left">
 
-    <!-- Intro Paragraph -->
-    <p class="text-lg md:text-xl leading-relaxed text-gray-300 mb-6">
-      Matthew Chen is a renowned <span class="font-semibold text-lime-300">Brazilian Zouk instructor</span> 
-      celebrated for his precision, expressive artistry, and deep connection to the essence of the dance. 
-      With years of experience teaching and performing across the Asia–Pacific, Matthew brings a rare blend 
-      of clarity, energy, and elegance to every class.
-    </p>
+      <!-- Intro Paragraph -->
+      <p class="text-lg md:text-lg leading-relaxed text-gray-300">
+        Matthew Chen is a renowned <span class="font-semibold text-lime-300">Brazilian Zouk instructor</span> 
+        celebrated for his precision, expressive artistry, and deep connection to the essence of the dance. 
+        With years of experience teaching and performing across the Asia–Pacific, Matthew brings a rare blend 
+        of clarity, energy, and elegance to every class.
+      </p>
 
-    <!-- Middle Paragraph -->
-    <p class="text-base md:text-lg leading-relaxed text-gray-300 mb-6">
-      Whether you’re stepping onto the floor for the first time or refining advanced technique, 
-      Matthew’s teaching nurtures confidence, musicality, and authentic partner connection. 
-      His unique approach combines strong foundations with artistic freedom—empowering every dancer 
-      to discover their own voice through movement.
-    </p>
-      </div>
+      <!-- Middle Paragraph -->
+      <p class="text-base md:text-lg leading-relaxed text-gray-300">
+        Whether you’re stepping onto the floor for the first time or refining advanced technique, 
+        Matthew’s teaching nurtures confidence, musicality, and authentic partner connection. 
+        His unique approach combines strong foundations with artistic freedom—empowering every dancer 
+        to discover their own voice through movement.
+      </p>
     </div>
-                <div class="w-24 h-1 bg-yellow-500 mx-auto"></div>
-            </div>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
-                <div class="dance-card p-8 rounded-lg bg-gray-900 text-center transition duration-300" data-aos="fade-up">
-                    <div class="w-20 h-20 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                        <i data-feather="activity" class="w-10 h-10 text-purple-600"></i>
-                    </div>
-                    <h3 class="text-lime-500 font-bold mb-3">Move Better</h3>
-                    <p class="text-gray-300">Improve your technique and body movement with our expert instructors.</p>
-                </div>
-                <div class="dance-card p-8 rounded-lg bg-gray-900 text-center transition duration-300" data-aos="fade-up" data-aos-delay="100">
-                    <div class="w-20 h-20 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                        <i data-feather="music" class="w-10 h-10 text-purple-600"></i>
-                    </div>
-                    <h3 class="text-yellow-500 font-bold mb-3">Dance Better</h3>
-                    <p class="text-gray-300">Master the art of Brazilian Zouk with our structured learning program.</p>
-                </div>
-                <div class="dance-card p-8 rounded-lg bg-gray-900 text-center transition duration-300" data-aos="fade-up" data-aos-delay="200">
-                    <div class="w-20 h-20 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                        <i data-feather="smile" class="w-10 h-10 text-purple-600"></i>
-                    </div>
-                    <h3 class="text-lime-500 font-bold mb-3">Have More Fun</h3>
-                    <p class="text-gray-300">Join our vibrant community and experience the joy of social dancing.</p>
-                </div>
-            </div>
-        </div>
+
+    <!-- RIGHT: IMAGE -->
+    <div class="flex justify-center md:justify-end">
+      <img src="{{ url_for('static', filename='matthew_scratching.png') }}" 
+           alt="Matthew Chen - Zouk Instructor" 
+           class="rounded-2xl shadow-lg w-80 md:w-96">
+    </div>
+
+  </div>
     </section>
 
     <!-- Featured Events -->
@@ -160,7 +144,7 @@
             </div>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <div class="bg-white rounded-lg overflow-hidden shadow-lg" data-aos="zoom-in">
-                    <img src="http://static.photos/event/640x360/1" alt="Zouk workshop" class="w-full h-48 object-cover">
+                    <img src="{{ url_for('static', filename='heeheee.jpg') }}" alt="Zouk workshop" class="w-full h-48 object-cover">
                     <div class="p-6">
                         <div class="flex justify-between items-center mb-2">
                             <span class="text-sm text-yellow-500 font-semibold">Workshop</span>

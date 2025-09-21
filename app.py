@@ -138,36 +138,43 @@ def generate_wednesdays():
 
 @app.route("/timetable")
 def timetable():
-    user = User.query.get(session["user_id"])
-    dates = generate_wednesdays()
     if "user_id" not in session:
         flash("Please log in first.")
         return redirect(url_for("login"))
 
+    user = User.query.get(session["user_id"])
+    dates = generate_wednesdays()
     now = datetime.now(TZ)
 
-    # Get this user's bookings from DB
+    formatted_dates = []
     user_bookings = {(b.date, b.time) for b in user.bookings}
     cancellable = {}
+
     for date in dates:
+        dt = datetime.strptime(date, "%Y-%m-%d")  # parse to datetime object
         for slot in SLOTS:
             key = f"{date} {slot}"
             try:
                 class_dt = datetime.strptime(key, "%Y-%m-%d %H:%M").replace(tzinfo=TZ)
+                cancellable[key] = (class_dt - now) > timedelta(hours=CANCEL_CUTOFF_HOURS)
             except ValueError:
-                # If date/time format is unexpected, mark non-cancellable
                 cancellable[key] = False
-                continue
-            cancellable[key] = (class_dt - now) > timedelta(hours=CANCEL_CUTOFF_HOURS)
+
+        formatted_dates.append({
+            "raw": dt.strftime("%Y-%m-%d"),   # backend format
+            "pretty": dt.strftime("%d-%m-%Y") # display format
+        })
 
     return render_template(
         "timetable.html",
-        dates=dates,
+        dates=formatted_dates,
+        slots=SLOTS,
         bookings=user_bookings,
         remaining_classes=user.remaining_classes,
         cancellable=cancellable,
         cancel_cutoff_hours=CANCEL_CUTOFF_HOURS
     )
+
 
 
 
