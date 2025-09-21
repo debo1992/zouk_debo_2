@@ -119,14 +119,24 @@ def dashboard():
     # Example check by email or username:
     admin_email = "debo_da_zouker"
     is_admin = (session.get('username') == admin_email)
+    bookings = []
+    user = User.query.get(session["user_id"])
+    for b in user.bookings:
+        class_datetime = datetime.strptime(f"{b.date} {b.time}", "%Y-%m-%d %H:%M")
+        bookings.append({
+            "date": b.date,
+            "time": b.time,
+            "class_datetime": class_datetime
+        })
 
+    now = datetime.now()
     if is_admin:
         users = User.query.order_by(User.id).all()
         return render_template('dashboard.html', username=session['username'], users=users, is_admin=True)
     else:
         user = User.query.get(session['user_id'])
         purchases = Purchase.query.filter_by(user_id=session['user_id']).order_by(Purchase.timestamp.desc()).all()
-        return render_template('dashboard.html', username=session['username'], purchases=purchases, is_admin=False, user = user)
+        return render_template('dashboard.html', username=session['username'], purchases=purchases, is_admin=False, user = user, bookings=bookings, now=now)
 
 def generate_wednesdays():
     start_date = datetime(2025, 9, 6)

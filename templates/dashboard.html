@@ -7,7 +7,6 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script src="https://unpkg.com/feather-icons"></script>
     <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
@@ -25,12 +24,8 @@
             margin-bottom: 1.5rem;
             font-size: 1.1rem;
         }
-        .text-lime-500 {
-            color: #c1ff72;
-        }
-        .hero-gradient {
-    background: linear-gradient( #000000 0%, #111827 100%);
-}
+        .text-lime-500 { color: #c1ff72; }
+        .hero-gradient { background: linear-gradient(#000000 0%, #111827 100%); }
         .nav-link:hover {
             color: #FFD700;
             transform: translateY(-2px);
@@ -38,7 +33,7 @@
         }
         .dance-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1), 0 10px 10px -5px rgba(0,0,0,0.04);
         }
     </style>
 </head>
@@ -59,13 +54,11 @@
                 <div class="hidden md:flex items-center space-x-8">
                     <a href="{{ url_for('home') }}" class="nav-link px-3 py-2 text-sm font-medium text-lime-500 hover:text-yellow-500">Home</a>
                     <a href="{{ url_for('dashboard') }}" class="nav-link px-3 py-2 text-sm font-medium text-lime-500 hover:text-yellow-500">Dashboard</a>
-                    <a href="{{ url_for('mybookings') }}" class="nav-link px-3 py-2 text-sm font-medium text-lime-500 hover:text-yellow-500">My Classes</a>
                     <a href="{{ url_for('timetable') }}" class="nav-link px-3 py-2 text-sm font-medium text-lime-500 hover:text-yellow-500">Timetable</a>
                     <a href="{{ url_for('pricing') }}" class="nav-link px-3 py-2 text-sm font-medium text-lime-500 hover:text-yellow-500">Plans & Pricing</a>
-                    <a href="#upcoming-events" class="nav-link px-3 py-2 text-sm font-medium text-lime-500 hover:text-yellow-500">Events</a>
-                    
-                    <a href="#footer" class="nav-link px-3 py-2 text-sm font-medium text-lime-500 hover:text-yellow-500">Contact</a>
-                    <a href="{{ url_for('login') }}" class="px-4 py-2 text-sm font-medium text-black bg-yellow-500 rounded-md hover:bg-lime-500 transition duration-300">Logout </a>
+                    <a href="{{ url_for('home') }}#upcoming-events" class="nav-link px-3 py-2 text-sm font-medium text-lime-500 hover:text-yellow-500">Events</a>
+                    <a href="{{ url_for('home') }}#footer" class="nav-link px-3 py-2 text-sm font-medium text-lime-500 hover:text-yellow-500">Contact</a>
+                    <a href="{{ url_for('login') }}" class="px-4 py-2 text-sm font-medium text-black bg-yellow-500 rounded-md hover:bg-lime-500 transition duration-300">Logout</a>
                 </div>
                 <div class="md:hidden flex items-center">
                     <button class="text-gray-500 hover:text-gray-900 focus:outline-none">
@@ -76,105 +69,135 @@
         </div>
     </nav>
 
-    <h1 class="text-4xl md:text-6xl font-bold mb-6">Welcome {{ username }}!</h1>
+    <h1 class="text-white md:text-6xl font-bold mb-6">Welcome {{ username }}!</h1>
+
     {% if is_admin %}
-        <h2>All Users and Their Purchases</h2>
-        <table>
-            <thead>
+        <!-- Admin Section -->
+        <h2 class="text-2xl font-semibold mb-4">All Users and Their Purchases</h2>
+        <table class="w-full border border-gray-700 text-sm text-left mb-10">
+            <thead class="bg-gray-800 text-lime-400">
                 <tr>
-                    <th>User</th>
-                    <th>Email</th>
-                    <th>Delete Current Package</th>
-                    <th>Class Credits</th>
+                    <th class="px-4 py-2">User</th>
+                    <th class="px-4 py-2">Email</th>
+                    <th class="px-4 py-2">Delete Current Package</th>
+                    <th class="px-4 py-2">Class Credits</th>
                 </tr>
             </thead>
             <tbody>
                 {% for user in users %}
-                <tr>
-                    <td>
+                <tr class="border-t border-gray-700">
+                    <td class="px-4 py-2">
                         <form action="{{ url_for('delete_user', user_id=user.id) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this user and all their purchases?');">
-                            <button type="submit">Delete {{user.name}}</button>
+                            <button type="submit" class="bg-red-600 hover:bg-red-700 text-white px-3 py-1 rounded-md">Delete {{ user.name }}</button>
                         </form>
                     </td>
-                    <td>{{ user.email }}</td>
-                    <td>
+                    <td class="px-4 py-2">{{ user.email }}</td>
+                    <td class="px-4 py-2">
                         {% if user.purchases %}
-                            <ul style="list-style-type:none;">
-                            {% for p in user.purchases %}
-                                <li>
-                                <!-- Delete Purchase Button -->
-                                <form action="{{ url_for('delete_purchase', purchase_id=p.id) }}" method="POST" 
-                                    style="display:inline;" 
-                                    onsubmit="return confirm('Delete this purchase?');">
-                                    <button type="submit">{{ p.plan_name }} </button>
-                                </form>- {{ p.timestamp.strftime('%Y-%m-%d') }}
-                                </li>
-                            {% endfor %}
+                            <ul class="list-none">
+                                {% for p in user.purchases %}
+                                    <li class="mb-1">
+                                        <form action="{{ url_for('delete_purchase', purchase_id=p.id) }}" method="POST" style="display:inline;" onsubmit="return confirm('Delete this purchase?');">
+                                            <button type="submit" class="bg-red-500 hover:bg-red-600 text-white px-2 py-1 rounded-md">{{ p.plan_name }}</button>
+                                        </form> - {{ p.timestamp.strftime('%Y-%m-%d') }}
+                                    </li>
+                                {% endfor %}
                             </ul>
                         {% else %}
                             No purchases
                         {% endif %}
                     </td>
-                    <td>
-                        <!-- Display remaining classes -->
+                    <td class="px-4 py-2">
                         <span>{{ user.remaining_classes }}</span>
-                        
-                        <!-- Add one class credit (green) -->
-                        <form action="{{ url_for('add_class_credit', user_id=user.id) }}" method="POST" style="display:inline;" 
-                            onsubmit="return confirm('Add one class credit to {{ user.name }}?');">
-                            <button type="submit" style="background-color: #16a34a; color: white; padding: 3px 8px; border: none; border-radius: 4px; margin-left: 5px;">
-                                +1
-                            </button>
+                        <form action="{{ url_for('add_class_credit', user_id=user.id) }}" method="POST" style="display:inline;" onsubmit="return confirm('Add one class credit to {{ user.name }}?');">
+                            <button type="submit" class="bg-green-600 hover:bg-green-700 text-white px-2 py-1 rounded-md ml-2">+1</button>
                         </form>
-
-                        <!-- Remove one class credit (red) -->
-                        <form action="{{ url_for('remove_class_credit', user_id=user.id) }}" method="POST" style="display:inline;" 
-                            onsubmit="return confirm('Remove one class credit from {{ user.name }}?');">
-                            <button type="submit" style="background-color: #dc2626; color: white; padding: 3px 8px; border: none; border-radius: 4px; margin-left: 5px;">
-                                -1
-                            </button>
+                        <form action="{{ url_for('remove_class_credit', user_id=user.id) }}" method="POST" style="display:inline;" onsubmit="return confirm('Remove one class credit from {{ user.name }}?');">
+                            <button type="submit" class="bg-red-600 hover:bg-red-700 text-white px-2 py-1 rounded-md ml-2">-1</button>
                         </form>
                     </td>
                 </tr>
                 {% endfor %}
             </tbody>
         </table>
+
     {% else %}
-        <h2>Your Purchases</h2>
-        <ul>
-            {% if purchases %}
-                {% for purchase in purchases %}
-                    <li>{{ purchase.plan_name }} - {{ purchase.timestamp.strftime('%Y-%m-%d %H:%M') }}</li>
+        <!-- Non-admin Section -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 px-6 py-10">
+
+            <!-- My Purchases -->
+            <div class="bg-gray-900 p-6 rounded-2xl shadow-lg">
+                <h2 class="text-2xl font-bold text-lime-500 mb-4">My Purchases</h2>
+                {% if purchases %}
+                    <ul class="list-disc list-inside space-y-2 text-gray-300">
+                        {% for purchase in purchases %}
+                        <li>
+                            <span class="font-semibold text-yellow-400">{{ purchase.plan_name }}</span> – {{ purchase.timestamp.strftime('%Y-%m-%d %H:%M') }}
+                        </li>
+                        {% endfor %}
+                    </ul>
+                {% else %}
+                    <p class="text-yellow-400">You have no purchases yet.</p>
+                {% endif %}
+                <h3 class="mt-6 text-lg font-semibold text-yellow-400">Remaining Classes: {{ user.remaining_classes }}</h3>
+            </div>
+
+            <!-- Right Column: My Bookings -->
+<div class="bg-gray-900 p-6 rounded-2xl shadow-lg">
+    <h2 class="text-2xl font-bold text-lime-500 mb-4">My Bookings</h2>
+
+    {% if bookings %}
+    <div class="overflow-x-auto">
+        <table class="w-full border border-gray-700 text-sm text-left">
+            <thead class="bg-gray-800 text-lime-400">
+                <tr>
+                    <th class="px-4 py-2">Date</th>
+                    <th class="px-4 py-2">Class Start Time</th>
+                    <th class="px-4 py-2">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for b in bookings %}
+                <tr class="border-t border-gray-700">
+                    <td class="px-4 py-2 text-yellow-400">{{ b.date }}</td>
+                    <td class="px-4 py-2 text-lime-400">{{ b.time }}</td>
+                    <td class="px-4 py-2">
+                        {% if b.class_datetime > now %}
+                        <form method="POST" action="{{ url_for('cancel_class') }}">
+                            <input type="hidden" name="date" value="{{ b.date }}">
+                            <input type="hidden" name="time" value="{{ b.time }}">
+                            <button type="submit" class="bg-red-600 hover:bg-red-700 text-white px-3 py-1 rounded-md text-sm">Cancel</button>
+                        </form>
+                        {% else %}
+                        <span class="text-gray-400">Past</span>
+                        {% endif %}
+                    </td>
+                </tr>
                 {% endfor %}
-            {% else %}
-                <li>You have no purchases yet.</li>
-            {% endif %}
-        </ul>
-        <h2>You've got {{user.remaining_classes}} remaining classes</h2>
+            </tbody>
+        </table>
+    </div>
+    {% else %}
+        <p class="text-gray-400">You have no bookings yet.</p>
+    {% endif %}
+</div>
 
-        
-        {% endif %}
+        </div>
+    {% endif %}
 
-  <!-- FOOTER -->
-  <footer id="footer" class="bg-black text-center py-6 text-gray-400 border-t border-gray-800">
-    <p>&copy; 2025 Deboshree & Zouk Motion. Content and design are protected.</p>
-  </footer>
+    <!-- FOOTER -->
+    <footer id="footer" class="bg-black text-center py-6 text-gray-400 border-t border-gray-800">
+        <p>&copy; 2025 Deboshree & Zouk Motion. Content and design are protected.</p>
+    </footer>
 
-<script>
-        AOS.init({
-            duration: 800,
-            easing: 'ease-in-out',
-            once: true
-        });
+    <script>
+        AOS.init({ duration: 800, easing: 'ease-in-out', once: true });
         feather.replace();
-        
+
         // Mobile menu toggle
         document.querySelector('[data-feather="menu"]').addEventListener('click', function() {
-            // Add mobile menu functionality here
             console.log('Mobile menu clicked');
         });
     </script>
-
 </body>
-</html>
 </html>
