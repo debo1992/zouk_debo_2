@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard</title>
+    <style>
+        table { border-collapse: collapse; width: 100%; }
+        th, td { border: 1px solid #ddd; padding: 8px; }
+        th { background-color: #f2f2f2; }
+        tr:hover { background-color: #f9f9f9; }
+        button { padding: 5px 10px; background-color: #e74c3c; color: white; border: none; border-radius: 4px; cursor: pointer; }
+        button:hover { background-color: #c0392b; }
+    </style>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body class="bg-gray-900 text-white font-sans p-8">
+    <header>
+        <nav>
+            <div class="nav-container">
+                <ul class="top-nav">
+                    <li><a href="{{ url_for('dashboard') }}">Home</a></li>
+                    <li><a href="{{ url_for('about') }}">About Us</a></li>
+                    <li><a href="{{ url_for('timetable') }}">Timetable</a></li>
+                    <li><a href="{{ url_for('mybookings') }}">My Bookings</a></li>
+                    <li><a href="{{ url_for('pricing') }}">Pricing & Plans</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                    <li><a href="{{ url_for('logout') }}">Logout</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <h1>Welcome, {{ username }}!</h1>
+    
+
+    {% if is_admin %}
+        <h2>All Users and Their Purchases</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>User</th>
+                    <th>Email</th>
+                    <th>Delete Current Package</th>
+                    <th>Class Credits</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for user in users %}
+                <tr>
+                    <td>
+                        <form action="{{ url_for('delete_user', user_id=user.id) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this user and all their purchases?');">
+                            <button type="submit">Delete {{user.name}}</button>
+                        </form>
+                    </td>
+                    <td>{{ user.email }}</td>
+                    <td>
+                        {% if user.purchases %}
+                            <ul style="list-style-type:none;">
+                            {% for p in user.purchases %}
+                                <li>
+                                <!-- Delete Purchase Button -->
+                                <form action="{{ url_for('delete_purchase', purchase_id=p.id) }}" method="POST" 
+                                    style="display:inline;" 
+                                    onsubmit="return confirm('Delete this purchase?');">
+                                    <button type="submit">{{ p.plan_name }} </button>
+                                </form>- {{ p.timestamp.strftime('%Y-%m-%d') }}
+                                </li>
+                            {% endfor %}
+                            </ul>
+                        {% else %}
+                            No purchases
+                        {% endif %}
+                    </td>
+                    <td>
+                        <!-- Display remaining classes -->
+                        <span>{{ user.remaining_classes }}</span>
+                        
+                        <!-- Add one class credit (green) -->
+                        <form action="{{ url_for('add_class_credit', user_id=user.id) }}" method="POST" style="display:inline;" 
+                            onsubmit="return confirm('Add one class credit to {{ user.name }}?');">
+                            <button type="submit" style="background-color: #16a34a; color: white; padding: 3px 8px; border: none; border-radius: 4px; margin-left: 5px;">
+                                +1
+                            </button>
+                        </form>
+
+                        <!-- Remove one class credit (red) -->
+                        <form action="{{ url_for('remove_class_credit', user_id=user.id) }}" method="POST" style="display:inline;" 
+                            onsubmit="return confirm('Remove one class credit from {{ user.name }}?');">
+                            <button type="submit" style="background-color: #dc2626; color: white; padding: 3px 8px; border: none; border-radius: 4px; margin-left: 5px;">
+                                -1
+                            </button>
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <h2>Your Purchases</h2>
+        <ul>
+            {% if purchases %}
+                {% for purchase in purchases %}
+                    <li>{{ purchase.plan_name }} - {{ purchase.timestamp.strftime('%Y-%m-%d %H:%M') }}</li>
+                {% endfor %}
+            {% else %}
+                <li>You have no purchases yet.</li>
+            {% endif %}
+        </ul>
+        <h2>You've got {{user.remaining_classes}} remaining classes</h2>
+
+        
+        {% endif %}
+</body>
+<footer>
+    <p>&copy; 2025 Deboshree & Zouk Motion. Content and design are protected.</p>
+</footer>
+</html>

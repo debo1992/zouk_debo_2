@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to Zouk Motion</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body class="bg-gray-900 text-white font-sans min-h-screen flex flex-col">
+    <header>
+        <nav>
+            <div class="nav-container">
+                <ul class="top-nav">
+                    <li><a href="{{ url_for('home') }}">Home</a></li>
+                    <li><a href="{{ url_for('about') }}">About Us</a></li>
+                    <li><a href="{{ url_for('timetable') }}">Timetable</a></li>
+                    <li><a href="events.html">Events</a></li>
+                    <li><a href="{{ url_for('pricing') }}">Pricing & Plans</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                    
+                    {% if session.get('username') %}
+                        <li><a href="{{ url_for('dashboard') }}">Dashboard</a></li>
+                        <li><a href="{{ url_for('logout') }}">Logout</a></li>
+                        <li><span style="color: #aaa;">Welcome, {{ session['username'] }}</span></li>
+                    {% else %}
+                        <li><a href="{{ url_for('login') }}">Login</a></li>
+                        <li><a href="{{ url_for('signup') }}">Sign Up</a></li>
+                    {% endif %}
+                </ul>
+            </div>
+        </nav>
+        <div class="text-center py-10">
+            <img src="logo.png" alt="Zouk Motion Logo" class="mx-auto mb-4" style="width: 80px;">
+            <h1 class="text-3xl font-bold">ZOUK <span class="text-green-400">MOTION</span></h1>
+            <p class="text-2xl mt-2 font-semibold">Welcome Zouk Lovers!</p>
+          </div>
+    </header>
+    <main>
+        <h2>Move Better</h2>
+        <h2>Dance Better</h2>
+        <h2>Have More Fun</h2>
+        <p>Discover the best of Zouk, your go-to destination for music, dance, and culture.</p>
+    </main>
+    <footer>
+        <p>&copy; 2025 Deboshree & Zouk Motion. Content and design are protected.</p>
+    </footer>
+</body>
+</html>

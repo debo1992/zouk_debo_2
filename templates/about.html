@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Zouk with Matthew Chen | Zouk Motion</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+            background-color: #fafafa;
+            color: #333;
+        }
+        .container {
+            max-width: 900px;
+            margin: auto;
+        }
+        h1, h2 {
+            color: #c62828;
+        }
+        .profile-img {
+            width: 250px;
+            border-radius: 15px;
+            float: right;
+            margin: 20px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        .clear {
+            clear: both;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="nav-container">
+                <ul class="top-nav">
+                    <li><a href="{{ url_for('home') }}">Home</a></li>
+                    <li><a href="{{ url_for('about') }}">About Us</a></li>
+                    <li><a href="timetable.html">Timetable</a></li>
+                    <li><a href="events.html">Events</a></li>
+                    <li><a href="{{ url_for('pricing') }}">Pricing & Plans</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                    {% if session.get('username') %}
+                        <li><a href="{{ url_for('dashboard') }}">Dashboard</a></li>
+                        <li><a href="{{ url_for('logout') }}">Logout</a></li>
+                        <li><span style="color: #aaa;">Welcome, {{ session['username'] }}</span></li>
+                    {% else %}
+                        <li><a href="{{ url_for('login') }}">Login</a></li>
+                        <li><a href="{{ url_for('signup') }}">Sign Up</a></li>
+                    {% endif %}
+                </ul>
+            </div>
+        </nav>
+        <div class="container">
+            <h1>About Matthew Chen</h1>
+            <img src="{{ url_for('static', filename='matthew_chen.jpg') }}" alt="Matthew Chen" class="profile-img">
+    
+            <p><strong>Matthew Chen</strong> is a standout Brazilian Zouk instructor known for his precision, emotional expression, and deep connection to the dance. With years of experience training dancers across the Asia-Pacific region, Matthew brings clarity, energy, and elegance to every class he teaches.</p>
+    
+            <p>Whether you're just starting out or looking to refine your advanced technique, Matthew guides dancers to build confidence, musicality, and meaningful partner connection. His teaching blends foundational structure with artistic flair, empowering students to find their own voice through movement.</p>
+    
+            <h2>Why Dancers Love Matthew</h2>
+            <ul>
+                <li>✨ Expert in body mechanics and connection-based teaching</li>
+                <li>🌍 International performer and social dancer at major Zouk festivals</li>
+                <li>🎯 Feedback-driven approach to help you grow fast and feel great</li>
+                <li>💃 Teaches Zouk as a story—not just a set of moves</li>
+            </ul>
+    
+            <p>He’s more than an instructor—he’s a mentor who believes in unlocking the expressive potential of every dancer he meets.</p>
+    
+            <div class="clear"></div>
+        </div>
+    </header>
+
+    <main>
+        
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Deboshree & Zouk Motion. Content and design are protected.</p>
+    </footer>
+</body>
+</html>
