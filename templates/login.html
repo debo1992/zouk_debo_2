@@ -1,11 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Login | Zouk Motion</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Zouk Motion Class Packages</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+  <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
+<body class="bg-black text-white">
+
+  <!-- NAV -->
+  <nav class="bg-black shadow-lg sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between h-16">
+        <div class="flex items-center">
+          <div class="flex-shrink-0 flex items-center">
+            <img class="h-10 w-auto" src="{{ url_for('static', filename='logo.png') }}" alt="Zouk Motion Logo">
+            <span class="ml-2 text-xl font-bold">
+              <span class="text-yellow-500">ZOUK</span> 
+              <span class="text-lime-500">MOTION</span>
+            </span>
+          </div>
+        </div>
+        <div class="hidden md:flex items-center space-x-8">
+          <a href="{{ url_for('home') }}" class="nav-link px-3 py-2 text-sm font-medium text-lime-500 hover:text-yellow-500">Home</a>
+          <a href="{{ url_for('home') }}#benefits" class="nav-link px-3 py-2 text-sm font-medium text-lime-500 hover:text-yellow-500">About</a>
+          <a href="timetable.html" class="nav-link px-3 py-2 text-sm font-medium text-lime-500 hover:text-yellow-500">Timetable</a>
+          <a href="#" class="nav-link px-3 py-2 text-sm font-medium text-lime-500 hover:text-yellow-500">Plans & Pricing</a>
+          <a href="{{ url_for('home') }}#upcoming-events" class="nav-link px-3 py-2 text-sm font-medium text-lime-500 hover:text-yellow-500">Events</a>
+          <a href="{{ url_for('home') }}#footer" class="nav-link px-3 py-2 text-sm font-medium text-lime-500 hover:text-yellow-500">Contact</a>
+          <a href="#" class="px-4 py-2 text-sm font-medium text-black bg-yellow-500 rounded-md hover:bg-lime-500 transition duration-300">Login</a>
+        </div>
+      </div>
+    </div>  
+  </nav>
     <h2>Login to Zouk Motion</h2>
     <form method="POST">
         <label>Email:</label><br>
@@ -27,5 +55,19 @@
         </ul>
       {% endif %}
     {% endwith %}
+  <script>
+        AOS.init({
+            duration: 800,
+            easing: 'ease-in-out',
+            once: true
+        });
+        feather.replace();
+        
+        // Mobile menu toggle
+        document.querySelector('[data-feather="menu"]').addEventListener('click', function() {
+            // Add mobile menu functionality here
+            console.log('Mobile menu clicked');
+        });
+    </script>
 </body>
 </html>

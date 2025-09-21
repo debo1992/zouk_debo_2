@@ -1,38 +1,28 @@
-/* Style the top nav bar */
-.top-nav {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  background-color: #014421; /* Dark forest green */
-  display: flex;
-  justify-content: center; /* Center the nav items horizontally */
-  gap: 40px; /* Space between links */
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+body {
+	padding: 2rem;
+	font-family: -apple-system, BlinkMacSystemFont, "Arial", sans-serif;
 }
 
-.top-nav li {
-  display: inline;
+h1 {
+	font-size: 16px;
+	margin-top: 0;
 }
 
-.top-nav a {
-  display: block;
-  padding: 15px 20px;
-  text-decoration: none;
-  color: #e0f2e9; /* light greenish text */
-  font-weight: bold;
-  border-radius: 5px;
-  transition: background-color 0.3s ease;
+p {
+	color: rgb(107, 114, 128);
+	font-size: 15px;
+	margin-bottom: 10px;
+	margin-top: 5px;
 }
 
-.top-nav a:hover,
-.top-nav a:focus {
-  background-color: #2e8b57; /* lighter forest green on hover */
-  color: white;
+.card {
+	max-width: 620px;
+	margin: 0 auto;
+	padding: 16px;
+	border: 1px solid lightgray;
+	border-radius: 16px;
 }
 
-/* Optional: make header text lighter to contrast */
-header h1, header h2 {
-  color: #d1e8d1;
-  text-align: center;
-  margin: 0.2em 0;
+.card p:last-child {
+	margin-bottom: 0;
 }

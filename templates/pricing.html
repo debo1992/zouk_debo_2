@@ -7,110 +7,130 @@
   <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-gray-900 text-white font-sans">
-    <header>
-        <nav>
-            <div class="nav-container">
-                <ul class="top-nav">
-                    <li><a href="{{ url_for('home') }}">Home</a></li>
-                    <li><a href="{{ url_for('about') }}">About Us</a></li>
-                    <li><a href="{{ url_for('timetable') }}">Timetable</a></li>
-                    <li><a href="{{ url_for('mybookings') }}">My Bookings</a></li>
-                    <li><a href="{{ url_for('pricing') }}">Pricing & Plans</a></li>
-                    <li><a href="contact.html">Contact Us</a></li>
-                    
-                    {% if session.get('username') %}
-                        <li><a href="{{ url_for('dashboard') }}">Dashboard</a></li>
-                        <li><a href="{{ url_for('logout') }}">Logout</a></li>
-                        <li><span style="color: #aaa;">Welcome, {{ session['username'] }}</span></li>
-                    {% else %}
-                        <li><a href="{{ url_for('login') }}">Login</a></li>
-                        <li><a href="{{ url_for('signup') }}">Sign Up</a></li>
-                    {% endif %}
-                </ul>
-            </div>
-        </nav>
-    </header>
-  <div class="text-center py-10">
-    <img src="logo.png" alt="Zouk Motion Logo" class="mx-auto mb-4" style="width: 80px;">
-    <h1 class="text-3xl font-bold">ZOUK <span class="text-green-400">MOTION</span></h1>
-    <p class="text-2xl mt-2 font-semibold">CLASS PACKAGES</p>
-    <p class="text-sm mt-1 text-gray-300">Starting June 2025</p>
+<body class="bg-black text-white">
+
+  <!-- NAV -->
+  <nav class="bg-black shadow-lg sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between h-16">
+        <div class="flex items-center">
+          <div class="flex-shrink-0 flex items-center">
+            <img class="h-10 w-auto" src="{{ url_for('static', filename='logo.png') }}" alt="Zouk Motion Logo">
+            <span class="ml-2 text-xl font-bold">
+              <span class="text-yellow-500">ZOUK</span> 
+              <span class="text-lime-500">MOTION</span>
+            </span>
+          </div>
+        </div>
+        <div class="hidden md:flex items-center space-x-8">
+          <a href="{{ url_for('home') }}" class="nav-link px-3 py-2 text-sm font-medium text-lime-500 hover:text-yellow-500">Home</a>
+          <a href="{{ url_for('home') }}#benefits" class="nav-link px-3 py-2 text-sm font-medium text-lime-500 hover:text-yellow-500">About</a>
+          <a href="timetable.html" class="nav-link px-3 py-2 text-sm font-medium text-lime-500 hover:text-yellow-500">Timetable</a>
+          <a href="{{ url_for('pricing') }}" class="nav-link px-3 py-2 text-sm font-medium text-lime-500 hover:text-yellow-500">Plans & Pricing</a>
+          <a href="{{ url_for('home') }}#upcoming-events" class="nav-link px-3 py-2 text-sm font-medium text-lime-500 hover:text-yellow-500">Events</a>
+          <a href="{{ url_for('home') }}#footer" class="nav-link px-3 py-2 text-sm font-medium text-lime-500 hover:text-yellow-500">Contact</a>
+          <a href="#" class="px-4 py-2 text-sm font-medium text-black bg-yellow-500 rounded-md hover:bg-lime-500 transition duration-300">Login</a>
+        </div>
+      </div>
+    </div>  
+  </nav>
+
+  <!-- HERO -->
+  <div class="text-center py-10 bg-black">
+    <img src="{{ url_for('static', filename='logo.png') }}" alt="Zouk Motion Logo" class="mx-auto mb-4" style="width: 80px;">
+    <h1 class="text-3xl font-bold text-yellow-400">CLASS <span class="text-lime-500">PACKAGES</span></h1>
   </div>
 
+  <!-- PACKAGES GRID -->
   <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto px-4 pb-20">
-  
-  <!-- Zouk Lover -->
-  <div class="bg-white text-black rounded-xl shadow-lg p-6 border-t-8 border-red-500">
-    <h2 class="text-xl font-bold text-center mb-4">Zouk Lover</h2>
-    <p class="text-3xl font-bold text-center text-red-600 mb-4">$200</p>
-    <ul class="text-sm mb-6 space-y-2">
-      <li>• <strong>Unlimited</strong> Classes (up to 12 in total)</li>
-      <li>• Valid for 4 weeks</li>
-      <li>• Cost per class = $16.67</li>
-    </ul>
-    <form action="{{ url_for('purchase') }}" method="POST">
-      <input type="hidden" name="plan_name" value="Zouk Lover">
-      <button type="submit" class="block w-full text-red-600 border border-red-600 py-2 rounded-full font-semibold hover:bg-red-100 transition">
-        Reserve My Spot
-      </button>
-    </form>
+
+    <!-- Zouk Lover -->
+    <div class="bg-white text-black rounded-xl shadow-lg p-6 border-t-8 border-red-500">
+      <h2 class="text-xl font-bold text-center mb-4">Zouk Lover</h2>
+      <p class="text-3xl font-bold text-center text-red-600 mb-4">$200</p>
+      <ul class="text-sm mb-6 space-y-2">
+        <li>• <strong>Unlimited</strong> Classes (up to 12 in total)</li>
+        <li>• Valid for 4 weeks</li>
+        <li>• Cost per class = $16.67</li>
+      </ul>
+      <form action="{{ url_for('purchase') }}" method="POST">
+        <input type="hidden" name="plan_name" value="Zouk Lover">
+        <button type="submit" class="block w-full text-red-600 border border-red-600 py-2 rounded-full font-semibold hover:bg-red-100 transition">
+          Reserve My Spot
+        </button>
+      </form>
+    </div>
+
+    <!-- Zouk Fan -->
+    <div class="bg-white text-black rounded-xl shadow-lg p-6 border-t-8 border-green-600">
+      <h2 class="text-xl font-bold text-center mb-4">Zouk Fan</h2>
+      <p class="text-3xl font-bold text-center text-green-600 mb-4">$220</p>
+      <ul class="text-sm mb-6 space-y-2">
+        <li>• 12 Classes included, use when you want</li>
+        <li>• Valid for 8 weeks</li>
+        <li>• Cost per class = $18.33</li>
+      </ul>
+      <form action="{{ url_for('purchase') }}" method="POST">
+        <input type="hidden" name="plan_name" value="Zouk Fan">
+        <button type="submit" class="block w-full text-green-600 border border-green-600 py-2 rounded-full font-semibold hover:bg-green-100 transition">
+          Reserve My Spot
+        </button>
+      </form>
+    </div>
+
+    <!-- Zouk Admirer -->
+    <div class="bg-white text-black rounded-xl shadow-lg p-6 border-t-8 border-purple-600">
+      <h2 class="text-xl font-bold text-center mb-4">Zouk Admirer</h2>
+      <p class="text-3xl font-bold text-center text-purple-600 mb-4">$120</p>
+      <ul class="text-sm mb-6 space-y-2">
+        <li>• 6 Classes included, use when you want</li>
+        <li>• Valid for 8 weeks</li>
+        <li>• Cost per class = $20</li>
+      </ul>
+      <form action="{{ url_for('purchase') }}" method="POST">
+        <input type="hidden" name="plan_name" value="Zouk Admirer">
+        <button type="submit" class="block w-full text-purple-600 border border-purple-600 py-2 rounded-full font-semibold hover:bg-purple-100 transition">
+          Reserve My Spot
+        </button>
+      </form>
+    </div>
+
+    <!-- Casual Drop In -->
+    <div class="bg-white text-black rounded-xl shadow-lg p-6 border-t-8 border-gray-600">
+      <h2 class="text-xl font-bold text-center mb-4">Casual Drop In</h2>
+      <p class="text-3xl font-bold text-center text-gray-800 mb-4">$24</p>
+      <ul class="text-sm mb-6 space-y-2">
+        <li>• $24 per class</li>
+        <li>• Suitable for those who want to do the occasional class</li>
+      </ul>
+      <form action="{{ url_for('purchase') }}" method="POST">
+        <input type="hidden" name="plan_name" value="Casual Drop In">
+        <button type="submit" class="block w-full text-gray-800 border border-gray-800 py-2 rounded-full font-semibold hover:bg-gray-100 transition">
+          Reserve My Spot
+        </button>
+      </form>
+    </div>
   </div>
 
-  <!-- Zouk Fan -->
-  <div class="bg-white text-black rounded-xl shadow-lg p-6 border-t-8 border-green-600">
-    <h2 class="text-xl font-bold text-center mb-4">Zouk Fan</h2>
-    <p class="text-3xl font-bold text-center text-green-600 mb-4">$220</p>
-    <ul class="text-sm mb-6 space-y-2">
-      <li>• 12 Classes included, use when you want</li>
-      <li>• Valid for 8 weeks</li>
-      <li>• Cost per class = $18.33</li>
-    </ul>
-    <form action="{{ url_for('purchase') }}" method="POST">
-      <input type="hidden" name="plan_name" value="Zouk Fan">
-      <button type="submit" class="block w-full text-green-600 border border-green-600 py-2 rounded-full font-semibold hover:bg-green-100 transition">
-        Reserve My Spot
-      </button>
-    </form>
-  </div>
-
-  <!-- Zouk Admirer -->
-  <div class="bg-white text-black rounded-xl shadow-lg p-6 border-t-8 border-purple-600">
-    <h2 class="text-xl font-bold text-center mb-4">Zouk Admirer</h2>
-    <p class="text-3xl font-bold text-center text-purple-600 mb-4">$120</p>
-    <ul class="text-sm mb-6 space-y-2">
-      <li>• 6 Classes included, use when you want</li>
-      <li>• Valid for 8 weeks</li>
-      <li>• Cost per class = $20</li>
-    </ul>
-    <form action="{{ url_for('purchase') }}" method="POST">
-      <input type="hidden" name="plan_name" value="Zouk Admirer">
-      <button type="submit" class="block w-full text-purple-600 border border-purple-600 py-2 rounded-full font-semibold hover:bg-purple-100 transition">
-        Reserve My Spot
-      </button>
-    </form>
-  </div>
-
-  <!-- Casual Drop In -->
-  <div class="bg-white text-black rounded-xl shadow-lg p-6 border-t-8 border-gray-600">
-    <h2 class="text-xl font-bold text-center mb-4">Casual Drop In</h2>
-    <p class="text-3xl font-bold text-center text-gray-800 mb-4">$24</p>
-    <ul class="text-sm mb-6 space-y-2">
-      <li>• $24 per class</li>
-      <li>• Suitable for those who want to do the occasional class</li>
-    </ul>
-    <form action="{{ url_for('purchase') }}" method="POST">
-      <input type="hidden" name="plan_name" value="Casual Drop In">
-      <button type="submit" class="block w-full text-gray-800 border border-gray-800 py-2 rounded-full font-semibold hover:bg-gray-100 transition">
-        Reserve My Spot
-      </button>
-    </form>
-  </div>
-</div>
-
-<footer>
+  <!-- FOOTER -->
+  <footer id="footer" class="bg-black text-center py-6 text-gray-400 border-t border-gray-800">
     <p>&copy; 2025 Deboshree & Zouk Motion. Content and design are protected.</p>
-</footer>
+  </footer>
+
+<script>
+        AOS.init({
+            duration: 800,
+            easing: 'ease-in-out',
+            once: true
+        });
+        feather.replace();
+        
+        // Mobile menu toggle
+        document.querySelector('[data-feather="menu"]').addEventListener('click', function() {
+            // Add mobile menu functionality here
+            console.log('Mobile menu clicked');
+        });
+    </script>
 
 </body>
 </html>

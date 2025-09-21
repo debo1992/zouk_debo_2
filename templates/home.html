@@ -3,47 +3,350 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welcome to Zouk Motion</title>
+    <title>Zouk Motion | Brazilian Zouk Dance Community</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #000;
+            line-height: 1.6;
+            color: #e2e8f0;
+        }
+        h1, h2, h3, h4, h5, h6 {
+            line-height: 1.3;
+            margin-bottom: 1rem;
+        }
+        p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+        .text-lime-500 {
+            color: #c1ff72;
+        }
+        .hero-gradient {
+    background: linear-gradient( #000000 0%, #111827 100%);
+}
+        .nav-link:hover {
+            color: #FFD700;
+            transform: translateY(-2px);
+            transition: all 0.3s ease;
+        }
+        .dance-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+    </style>
 </head>
-<body class="bg-gray-900 text-white font-sans min-h-screen flex flex-col">
-    <header>
-        <nav>
-            <div class="nav-container">
-                <ul class="top-nav">
-                    <li><a href="{{ url_for('home') }}">Home</a></li>
-                    <li><a href="{{ url_for('about') }}">About Us</a></li>
-                    <li><a href="{{ url_for('timetable') }}">Timetable</a></li>
-                    <li><a href="events.html">Events</a></li>
-                    <li><a href="{{ url_for('pricing') }}">Pricing & Plans</a></li>
-                    <li><a href="contact.html">Contact Us</a></li>
+<body class="text-gray-800">
+    <!-- Navigation -->
+    <nav class="bg-black shadow-lg sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0 flex items-center">
+                        <img class="h-10 w-auto" src="{{ url_for('static', filename='logo.png') }}" alt="Zouk Motion Logo">
+                        <span class="ml-2 text-xl font-bold">
+                            <span class="text-yellow-500">ZOUK</span> 
+                            <span class="text-lime-500">MOTION</span>
+                        </span>
+                    </div>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="{{ url_for('home') }}" class="nav-link px-3 py-2 text-sm font-medium text-lime-500 hover:text-yellow-500">Home</a>
+                    <a href="#benefits" class="nav-link px-3 py-2 text-sm font-medium text-lime-500 hover:text-yellow-500">About</a>
+                    <a href="#" class="nav-link px-3 py-2 text-sm font-medium text-lime-500 hover:text-yellow-500">Timetable</a>
+                    <a href="{{ url_for('pricing') }}" class="nav-link px-3 py-2 text-sm font-medium text-lime-500 hover:text-yellow-500">Plans & Pricing</a>
+                    <a href="#upcoming-events" class="nav-link px-3 py-2 text-sm font-medium text-lime-500 hover:text-yellow-500">Events</a>
                     
-                    {% if session.get('username') %}
-                        <li><a href="{{ url_for('dashboard') }}">Dashboard</a></li>
-                        <li><a href="{{ url_for('logout') }}">Logout</a></li>
-                        <li><span style="color: #aaa;">Welcome, {{ session['username'] }}</span></li>
-                    {% else %}
-                        <li><a href="{{ url_for('login') }}">Login</a></li>
-                        <li><a href="{{ url_for('signup') }}">Sign Up</a></li>
-                    {% endif %}
-                </ul>
+                    <a href="#footer" class="nav-link px-3 py-2 text-sm font-medium text-lime-500 hover:text-yellow-500">Contact</a>
+                    <a href="#" class="px-4 py-2 text-sm font-medium text-black bg-yellow-500 rounded-md hover:bg-lime-500 transition duration-300">Login </a>
+                </div>
+                <div class="md:hidden flex items-center">
+                    <button class="text-gray-500 hover:text-gray-900 focus:outline-none">
+                        <i data-feather="menu"></i>
+                    </button>
+                </div>
             </div>
-        </nav>
-        <div class="text-center py-10">
-            <img src="logo.png" alt="Zouk Motion Logo" class="mx-auto mb-4" style="width: 80px;">
-            <h1 class="text-3xl font-bold">ZOUK <span class="text-green-400">MOTION</span></h1>
-            <p class="text-2xl mt-2 font-semibold">Welcome Zouk Lovers!</p>
-          </div>
-    </header>
-    <main>
-        <h2>Move Better</h2>
-        <h2>Dance Better</h2>
-        <h2>Have More Fun</h2>
-        <p>Discover the best of Zouk, your go-to destination for music, dance, and culture.</p>
-    </main>
-    <footer>
-        <p>&copy; 2025 Deboshree & Zouk Motion. Content and design are protected.</p>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-gradient text-lime-500 py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-10 md:mb-0" data-aos="fade-right">
+                    <h1 class="text-4xl md:text-6xl font-bold mb-6">Welcome Zouk Lovers!</h1>
+                    <p class="text-xl mb-8 leading-relaxed">Discover the best of Zouk, your go-to destination for music, dance, and culture.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="px-8 py-3 bg-white text-black font-bold rounded-full hover:bg-lime-500 hover:text-black transition duration-300">Join Now</a>
+                        <a href="#benefits" class="px-8 py-3 border-2 border-white text-white font-bold rounded-full hover:bg-lime-500 hover:text-black transition duration-300">Learn More</a>
+                    </div>
+                </div>
+                <div class="md:w-1/2" data-aos="fade-left">
+                    <img src="http://static.photos/people/1200x630/1" alt="Zouk dancers" class="rounded-lg shadow-2xl">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section id="benefits" class="py-20 bg-black">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-lime-500 mb-4">Why Dance With Us?</h2>
+                <section class="bg-gradient-to-b from-gray-900 to-gray-800 text-gray-100 py-20">
+  <div class="max-w-4xl mx-auto px-6 text-center space-y-8">
+    <!-- Heading -->
+    <h2 class="text-4xl md:text-5xl font-extrabold tracking-tight text-lime-400">
+      ✨ Meet Matthew Chen ✨
+    </h2>
+
+    <!-- Intro Paragraph -->
+    <p class="text-lg md:text-xl leading-relaxed text-gray-300 mb-6">
+      Matthew Chen is a renowned <span class="font-semibold text-lime-300">Brazilian Zouk instructor</span> 
+      celebrated for his precision, expressive artistry, and deep connection to the essence of the dance. 
+      With years of experience teaching and performing across the Asia–Pacific, Matthew brings a rare blend 
+      of clarity, energy, and elegance to every class.
+    </p>
+
+    <!-- Middle Paragraph -->
+    <p class="text-base md:text-lg leading-relaxed text-gray-300 mb-6">
+      Whether you’re stepping onto the floor for the first time or refining advanced technique, 
+      Matthew’s teaching nurtures confidence, musicality, and authentic partner connection. 
+      His unique approach combines strong foundations with artistic freedom—empowering every dancer 
+      to discover their own voice through movement.
+    </p>
+      </div>
+    </div>
+                <div class="w-24 h-1 bg-yellow-500 mx-auto"></div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+                <div class="dance-card p-8 rounded-lg bg-gray-900 text-center transition duration-300" data-aos="fade-up">
+                    <div class="w-20 h-20 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i data-feather="activity" class="w-10 h-10 text-purple-600"></i>
+                    </div>
+                    <h3 class="text-lime-500 font-bold mb-3">Move Better</h3>
+                    <p class="text-gray-300">Improve your technique and body movement with our expert instructors.</p>
+                </div>
+                <div class="dance-card p-8 rounded-lg bg-gray-900 text-center transition duration-300" data-aos="fade-up" data-aos-delay="100">
+                    <div class="w-20 h-20 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i data-feather="music" class="w-10 h-10 text-purple-600"></i>
+                    </div>
+                    <h3 class="text-yellow-500 font-bold mb-3">Dance Better</h3>
+                    <p class="text-gray-300">Master the art of Brazilian Zouk with our structured learning program.</p>
+                </div>
+                <div class="dance-card p-8 rounded-lg bg-gray-900 text-center transition duration-300" data-aos="fade-up" data-aos-delay="200">
+                    <div class="w-20 h-20 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i data-feather="smile" class="w-10 h-10 text-purple-600"></i>
+                    </div>
+                    <h3 class="text-lime-500 font-bold mb-3">Have More Fun</h3>
+                    <p class="text-gray-300">Join our vibrant community and experience the joy of social dancing.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Events -->
+    <section id="upcoming-events" class="py-20 bg-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">Upcoming Events</h2>
+                <div class="w-24 h-1 bg-yellow-500 mx-auto"></div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-white rounded-lg overflow-hidden shadow-lg" data-aos="zoom-in">
+                    <img src="http://static.photos/event/640x360/1" alt="Zouk workshop" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <div class="flex justify-between items-center mb-2">
+                            <span class="text-sm text-yellow-500 font-semibold">Workshop</span>
+                            <span class="text-sm text-gray-500">June 15, 2025</span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Zouk Fundamentals</h3>
+                        <p class="text-gray-400 mb-4 leading-relaxed">Perfect for beginners to learn the basics of Brazilian Zouk.</p>
+                        <a href="#" class="text-yellow-500 font-medium hover:underline">Learn More →</a>
+                    </div>
+                </div>
+                <div class="bg-white rounded-lg overflow-hidden shadow-lg" data-aos="zoom-in" data-aos-delay="100">
+                    <img src="http://static.photos/event/640x360/2" alt="Social dance" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <div class="flex justify-between items-center mb-2">
+                            <span class="text-sm text-yellow-500 font-semibold">Social</span>
+                            <span class="text-sm text-gray-500">June 22, 2025</span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Zouk Night Out</h3>
+                        <p class="text-gray-400 mb-4 leading-relaxed">Join us for an evening of dancing and socializing.</p>
+                        <a href="#" class="text-yellow-500 font-medium hover:underline">Learn More →</a>
+                    </div>
+                </div>
+                <div class="bg-white rounded-lg overflow-hidden shadow-lg" data-aos="zoom-in" data-aos-delay="200">
+                    <img src="http://static.photos/event/640x360/3" alt="Zouk festival" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <div class="flex justify-between items-center mb-2">
+                            <span class="text-sm text-yellow-500 font-semibold">Festival</span>
+                            <span class="text-sm text-gray-500">July 5-7, 2025</span>
+                        </div>
+                        <h3 class="text-xl font-bold mb-2">Zouk Motion Festival</h3>
+                        <p class="text-gray-400 mb-4 leading-relaxed">Our annual celebration of Zouk with international instructors.</p>
+                        <a href="#" class="text-yellow-500 font-medium hover:underline">Learn More →</a>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-12">
+                <a href="#" class="px-8 py-3 bg-yellow-500 text-black font-bold rounded-full hover:bg-lime-500 transition duration-300 inline-block">View All Events</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="py-20 bg-black">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-white mb-4">What Our Dancers Say</h2>
+                <div class="w-24 h-1 bg-yellow-500 mx-auto"></div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-gray-900 p-8 rounded-lg" data-aos="fade-up">
+                    <div class="flex items-center mb-4">
+                        <img src="http://static.photos/people/200x200/1" alt="Testimonial" class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <h4 class="font-bold">Debo Kaliya</h4>
+                            <p class="text-sm text-gray-500">Student for 3 months</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-300">"Zouk Motion transformed my dancing completely. The instructors are patient and knowledgeable, and the community is so welcoming!"</p>
+                    <div class="flex mt-4 text-yellow-400">
+                        <i data-feather="star" class="w-4 h-4 fill-current"></i>
+                        <i data-feather="star" class="w-4 h-4 fill-current"></i>
+                        <i data-feather="star" class="w-4 h-4 fill-current"></i>
+                        <i data-feather="star" class="w-4 h-4 fill-current"></i>
+                        <i data-feather="star" class="w-4 h-4 fill-current"></i>
+                    </div>
+                </div>
+                <div class="bg-gray-900 p-8 rounded-lg" data-aos="fade-up" data-aos-delay="100">
+                    <div class="flex items-center mb-4">
+                        <img src="http://static.photos/people/200x200/2" alt="Testimonial" class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <h4 class="font-bold">Sally</h4>
+                            <p class="text-sm text-gray-500">Student for 2 years</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-300">"I never thought I could dance, but Zouk Motion made it possible. Their step-by-step approach is perfect for beginners."</p>
+                    <div class="flex mt-4 text-yellow-400">
+                        <i data-feather="star" class="w-4 h-4 fill-current"></i>
+                        <i data-feather="star" class="w-4 h-4 fill-current"></i>
+                        <i data-feather="star" class="w-4 h-4 fill-current"></i>
+                        <i data-feather="star" class="w-4 h-4 fill-current"></i>
+                        <i data-feather="star" class="w-4 h-4 fill-current"></i>
+                    </div>
+                </div>
+                <div class="bg-gray-900 p-8 rounded-lg" data-aos="fade-up" data-aos-delay="200">
+                    <div class="flex items-center mb-4">
+                        <img src="http://static.photos/people/200x200/3" alt="Testimonial" class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <h4 class="font-bold">Noel</h4>
+                            <p class="text-sm text-gray-500">Student for 3 years</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-300">"The best dance school I've ever attended. The energy is amazing, and I've made so many friends through Zouk Motion."</p>
+                    <div class="flex mt-4 text-yellow-400">
+                        <i data-feather="star" class="w-4 h-4 fill-current"></i>
+                        <i data-feather="star" class="w-4 h-4 fill-current"></i>
+                        <i data-feather="star" class="w-4 h-4 fill-current"></i>
+                        <i data-feather="star" class="w-4 h-4 fill-current"></i>
+                        <i data-feather="star" class="w-4 h-4 fill-current"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="py-20 hero-gradient text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold mb-6">Ready to Start Your Zouk Journey?</h2>
+            <p class="text-xl mb-8 max-w-3xl mx-auto">Join our community of passionate dancers and experience the magic of Brazilian Zouk.</p>
+            <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
+                <a href="#" class="px-8 py-4 bg-black border-2 border-lime-500 text-yellow-500 font-bold rounded-full hover:bg-lime-500 hover:text-black transition duration-300">Book a Free Trial</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="footer" class="bg-black text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <img src="{{ url_for('static', filename='logo.png') }}" alt="Zouk Motion Logo" class="h-10 mb-4">
+                    <p class="text-gray-400">Your go-to destination for Brazilian Zouk music, dance, and culture.</p>
+                    <div class="flex space-x-4 mt-6">
+                        <a href="#" class="text-gray-400 hover:text-white"><i data-feather="facebook"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i data-feather="instagram"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i data-feather="youtube"></i></a>
+                        <a href="#" class="text-gray-400 hover:text-white"><i data-feather="twitter"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-lime-500 font-semibold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white">Home</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-lime">About Us</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Timetable</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Events</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Pricing</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lime-500 font-semibold mb-4">Contact</h3>
+                    <ul class="space-y-2 text-gray-400">
+                        <li class="flex items-start">
+                            <i data-feather="map-pin" class="w-4 h-4 mr-2 mt-1"></i>
+                            <span>Zouk Motion Sydney, Australia</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i data-feather="mail" class="w-4 h-4 mr-2 mt-1"></i>
+                            <span>zoukmotionsyd@gmail.com</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i data-feather="phone" class="w-4 h-4 mr-2 mt-1"></i>
+                            <span>+61 421 561 903</span>
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lime-500 font-semibold mb-4">Newsletter</h3>
+                    <p class="text-gray-400 mb-4 leading-relaxed">Subscribe to get updates on events and workshops.</p>
+                    <form class="flex">
+                        <input type="email" placeholder="Your email" class="px-4 py-2 rounded-l-md text-gray-900 w-full focus:outline-none">
+                        <button type="submit" class="bg-yellow-500 text-black px-4 py-2 rounded-r-md hover:bg-yellow-400 transition duration-300">
+                            <i data-feather="send"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+            <div class="border-t border-yellow-500 mt-12 pt-8 text-center text-yellow-700">
+                <p>© 2025 Deboshree Bose & Zouk Motion. All rights reserved.</p>
+            </div>
+        </div>
     </footer>
+
+    <script>
+        AOS.init({
+            duration: 800,
+            easing: 'ease-in-out',
+            once: true
+        });
+        feather.replace();
+        
+        // Mobile menu toggle
+        document.querySelector('[data-feather="menu"]').addEventListener('click', function() {
+            // Add mobile menu functionality here
+            console.log('Mobile menu clicked');
+        });
+    </script>
 </body>
 </html>
