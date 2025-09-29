@@ -25,7 +25,7 @@
             margin-bottom: 1.5rem;
             font-size: 1.1rem;
         }
-        .text-lime-500 {
+        .text-lime-300 {
             color: #c1ff72;
         }
         .hero-gradient {
@@ -48,43 +48,53 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-16">
                 <div class="flex items-center">
-                    <div class="flex-shrink-0 flex items-center">
-                        <img class="h-10 w-auto" src="{{ url_for('static', filename='logo.png') }}" alt="Zouk Motion Logo">
-                        <span class="ml-2 text-xl font-bold">
-                            <span class="text-yellow-500">ZOUK</span> 
-                            <span class="text-lime-500">MOTION</span>
+                    <div class="flex flex-col items-center mt-6">
+                        <img class="h-12 w-auto" src="{{ url_for('static', filename='logo.png') }}" alt="Zouk Motion Logo">
+                        <span class="mt-2 text-xl font-bold text-center">
+                            <span class="text-yellow-300">ZOUK</span> 
+                            <span class="text-lime-300">MOTION</span>
                         </span>
                     </div>
                 </div>
                 <div class="hidden md:flex items-center space-x-8">
-                    <a href="{{ url_for('home') }}" class="nav-link px-3 py-2 text-sm font-medium text-lime-500 hover:text-yellow-500">Home</a>
-                    <a href="#benefits" class="nav-link px-3 py-2 text-sm font-medium text-lime-500 hover:text-yellow-500">About</a>
-                    <a href="{{ url_for('timetable') }}" class="nav-link px-3 py-2 text-sm font-medium text-lime-500 hover:text-yellow-500">Timetable</a>
-                    <a href="{{ url_for('pricing') }}" class="nav-link px-3 py-2 text-sm font-medium text-lime-500 hover:text-yellow-500">Plans & Pricing</a>
-                    <a href="#upcoming-events" class="nav-link px-3 py-2 text-sm font-medium text-lime-500 hover:text-yellow-500">Events</a>
+                    <a href="{{ url_for('home') }}" class="nav-link px-3 py-2 text-sm font-medium text-lime-300 hover:text-yellow-300">Home</a>
+                    <a href="#benefits" class="nav-link px-3 py-2 text-sm font-medium text-lime-300 hover:text-yellow-300">About</a>
+                    <a href="{{ url_for('timetable') }}" class="nav-link px-3 py-2 text-sm font-medium text-lime-300 hover:text-yellow-300">Timetable</a>
+                    <a href="{{ url_for('pricing') }}" class="nav-link px-3 py-2 text-sm font-medium text-lime-300 hover:text-yellow-300">Plans & Pricing</a>
+                    <a href="#upcoming-events" class="nav-link px-3 py-2 text-sm font-medium text-lime-300 hover:text-yellow-300">Events</a>
                     
-                    <a href="#footer" class="nav-link px-3 py-2 text-sm font-medium text-lime-500 hover:text-yellow-500">Contact</a>
-                    <a href="{{ url_for('login') }}" class="px-4 py-2 text-sm font-medium text-black bg-yellow-500 rounded-md hover:bg-lime-500 transition duration-300">Login </a>
+                    <a href="#footer" class="nav-link px-3 py-2 text-sm font-medium text-lime-300 hover:text-yellow-300">Contact</a>
+                    <a href="{{ url_for('login') }}" class="px-4 py-2 text-sm font-medium text-black bg-yellow-300 rounded-md hover:bg-lime-300 transition duration-300">Login </a>
                 </div>
                 <div class="md:hidden flex items-center">
-                    <button class="text-gray-500 hover:text-gray-900 focus:outline-none">
+                    <button class="text-gray-300 hover:text-gray-900 focus:outline-none">
                         <i data-feather="menu"></i>
                     </button>
                 </div>
             </div>
         </div>
+        <!-- Mobile Dropdown Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-black px-4 pt-4 pb-6 space-y-4">
+            <a href="{{ url_for('home') }}" class="block text-lime-300 hover:text-yellow-300">Home</a>
+            <a href="#benefits" class="block text-lime-300 hover:text-yellow-300">About</a>
+            <a href="{{ url_for('timetable') }}" class="block text-lime-300 hover:text-yellow-300">Timetable</a>
+            <a href="{{ url_for('pricing') }}" class="block text-lime-300 hover:text-yellow-300">Plans & Pricing</a>
+            <a href="#upcoming-events" class="block text-lime-300 hover:text-yellow-300">Events</a>
+            <a href="#footer" class="block text-lime-300 hover:text-yellow-300">Contact</a>
+            <a href="{{ url_for('login') }}" class="block px-4 py-2 bg-yellow-300 text-black font-bold rounded-md hover:bg-lime-300">Login</a>
+        </div>
     </nav>
 
     <!-- Hero Section -->
-    <section class="hero-gradient text-lime-500 py-20">
+    <section class="hero-gradient text-lime-300 py-20">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex flex-col md:flex-row items-center">
                 <div class="md:w-1/2 mb-10 md:mb-0" data-aos="fade-right">
                     <h1 class="text-4xl md:text-6xl font-bold mb-6">Welcome Zouk Lovers!</h1>
                     <p class="text-xl mb-8 leading-relaxed">Discover the best of Zouk, your go-to destination for music, dance, and culture.</p>
                     <div class="flex space-x-4">
-                        <a href="#" class="px-8 py-3 bg-white text-black font-bold rounded-full hover:bg-lime-500 hover:text-black transition duration-300">Join Now</a>
-                        <a href="#benefits" class="px-8 py-3 border-2 border-white text-white font-bold rounded-full hover:bg-lime-500 hover:text-black transition duration-300">Learn More</a>
+                        <a href="{{ url_for('signup') }}" class="px-8 py-3 bg-white text-black font-bold rounded-full hover:bg-lime-300 hover:text-black transition duration-300">Join Now</a>
+                        <a href="#benefits" class="px-8 py-3 border-2 border-white text-white font-bold rounded-full hover:bg-lime-300 hover:text-black transition duration-300">Learn More</a>
                     </div>
                 </div>
                 <div class="md:w-1/2" data-aos="fade-left">
@@ -98,7 +108,7 @@
     <section id="benefits" class="py-20 bg-black">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
-                <h2 class="text-3xl font-bold text-lime-500 mb-4">Why Dance With Us?</h2>
+                <h2 class="text-3xl font-bold text-lime-300 mb-4">Why Dance With Us?</h2>
                 <section class="bg-gradient-to-b from-gray-900 to-gray-800 text-gray-100 py-20">
   <h2 class="text-4xl md:text-5xl font-extrabold tracking-tight text-lime-400">
         ✨ Meet Matthew Chen ✨
@@ -140,48 +150,48 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
                 <h2 class="text-3xl font-bold text-gray-800 mb-4">Upcoming Events</h2>
-                <div class="w-24 h-1 bg-yellow-500 mx-auto"></div>
+                <div class="w-24 h-1 bg-yellow-300 mx-auto"></div>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <div class="bg-white rounded-lg overflow-hidden shadow-lg" data-aos="zoom-in">
                     <img src="{{ url_for('static', filename='heeheee.jpg') }}" alt="Zouk workshop" class="w-full h-48 object-cover">
                     <div class="p-6">
                         <div class="flex justify-between items-center mb-2">
-                            <span class="text-sm text-yellow-500 font-semibold">Workshop</span>
-                            <span class="text-sm text-gray-500">June 15, 2025</span>
+                            <span class="text-sm text-yellow-300 font-semibold">Workshop</span>
+                            <span class="text-sm text-gray-300">June 15, 2025</span>
                         </div>
                         <h3 class="text-xl font-bold mb-2">Zouk Fundamentals</h3>
                         <p class="text-gray-400 mb-4 leading-relaxed">Perfect for beginners to learn the basics of Brazilian Zouk.</p>
-                        <a href="#" class="text-yellow-500 font-medium hover:underline">Learn More →</a>
+                        <a href="#" class="text-yellow-300 font-medium hover:underline">Learn More →</a>
                     </div>
                 </div>
                 <div class="bg-white rounded-lg overflow-hidden shadow-lg" data-aos="zoom-in" data-aos-delay="100">
                     <img src="http://static.photos/event/640x360/2" alt="Social dance" class="w-full h-48 object-cover">
                     <div class="p-6">
                         <div class="flex justify-between items-center mb-2">
-                            <span class="text-sm text-yellow-500 font-semibold">Social</span>
-                            <span class="text-sm text-gray-500">June 22, 2025</span>
+                            <span class="text-sm text-yellow-300 font-semibold">Social</span>
+                            <span class="text-sm text-gray-300">June 22, 2025</span>
                         </div>
                         <h3 class="text-xl font-bold mb-2">Zouk Night Out</h3>
                         <p class="text-gray-400 mb-4 leading-relaxed">Join us for an evening of dancing and socializing.</p>
-                        <a href="#" class="text-yellow-500 font-medium hover:underline">Learn More →</a>
+                        <a href="#" class="text-yellow-300 font-medium hover:underline">Learn More →</a>
                     </div>
                 </div>
                 <div class="bg-white rounded-lg overflow-hidden shadow-lg" data-aos="zoom-in" data-aos-delay="200">
                     <img src="http://static.photos/event/640x360/3" alt="Zouk festival" class="w-full h-48 object-cover">
                     <div class="p-6">
                         <div class="flex justify-between items-center mb-2">
-                            <span class="text-sm text-yellow-500 font-semibold">Festival</span>
-                            <span class="text-sm text-gray-500">July 5-7, 2025</span>
+                            <span class="text-sm text-yellow-300 font-semibold">Festival</span>
+                            <span class="text-sm text-gray-300">July 5-7, 2025</span>
                         </div>
                         <h3 class="text-xl font-bold mb-2">Zouk Motion Festival</h3>
                         <p class="text-gray-400 mb-4 leading-relaxed">Our annual celebration of Zouk with international instructors.</p>
-                        <a href="#" class="text-yellow-500 font-medium hover:underline">Learn More →</a>
+                        <a href="#" class="text-yellow-300 font-medium hover:underline">Learn More →</a>
                     </div>
                 </div>
             </div>
             <div class="text-center mt-12">
-                <a href="#" class="px-8 py-3 bg-yellow-500 text-black font-bold rounded-full hover:bg-lime-500 transition duration-300 inline-block">View All Events</a>
+                <a href="#" class="px-8 py-3 bg-yellow-300 text-black font-bold rounded-full hover:bg-lime-300 transition duration-300 inline-block">View All Events</a>
             </div>
         </div>
     </section>
@@ -191,7 +201,7 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
                 <h2 class="text-3xl font-bold text-white mb-4">What Our Dancers Say</h2>
-                <div class="w-24 h-1 bg-yellow-500 mx-auto"></div>
+                <div class="w-24 h-1 bg-yellow-300 mx-auto"></div>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <div class="bg-gray-900 p-8 rounded-lg" data-aos="fade-up">
@@ -255,7 +265,7 @@
             <h2 class="text-3xl md:text-4xl font-bold mb-6">Ready to Start Your Zouk Journey?</h2>
             <p class="text-xl mb-8 max-w-3xl mx-auto">Join our community of passionate dancers and experience the magic of Brazilian Zouk.</p>
             <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
-                <a href="#" class="px-8 py-4 bg-black border-2 border-lime-500 text-yellow-500 font-bold rounded-full hover:bg-lime-500 hover:text-black transition duration-300">Book a Free Trial</a>
+                <a href="{{ url_for('signup') }}" class="px-8 py-4 bg-black border-2 border-lime-300 text-yellow-300 font-bold rounded-full hover:bg-lime-300 hover:text-black transition duration-300">Book a Free Trial</a>
             </div>
         </div>
     </section>
@@ -275,7 +285,7 @@
                     </div>
                 </div>
                 <div>
-                    <h3 class="text-lime-500 font-semibold mb-4">Quick Links</h3>
+                    <h3 class="text-lime-300 font-semibold mb-4">Quick Links</h3>
                     <ul class="space-y-2">
                         <li><a href="#" class="text-gray-400 hover:text-white">Home</a></li>
                         <li><a href="#" class="text-gray-400 hover:text-lime">About Us</a></li>
@@ -285,7 +295,7 @@
                     </ul>
                 </div>
                 <div>
-                    <h3 class="text-lime-500 font-semibold mb-4">Contact</h3>
+                    <h3 class="text-lime-300 font-semibold mb-4">Contact</h3>
                     <ul class="space-y-2 text-gray-400">
                         <li class="flex items-start">
                             <i data-feather="map-pin" class="w-4 h-4 mr-2 mt-1"></i>
@@ -302,17 +312,17 @@
                     </ul>
                 </div>
                 <div>
-                    <h3 class="text-lime-500 font-semibold mb-4">Newsletter</h3>
+                    <h3 class="text-lime-300 font-semibold mb-4">Newsletter</h3>
                     <p class="text-gray-400 mb-4 leading-relaxed">Subscribe to get updates on events and workshops.</p>
                     <form class="flex">
                         <input type="email" placeholder="Your email" class="px-4 py-2 rounded-l-md text-gray-900 w-full focus:outline-none">
-                        <button type="submit" class="bg-yellow-500 text-black px-4 py-2 rounded-r-md hover:bg-yellow-400 transition duration-300">
+                        <button type="submit" class="bg-yellow-300 text-black px-4 py-2 rounded-r-md hover:bg-yellow-400 transition duration-300">
                             <i data-feather="send"></i>
                         </button>
                     </form>
                 </div>
             </div>
-            <div class="border-t border-yellow-500 mt-12 pt-8 text-center text-yellow-700">
+            <div class="border-t border-yellow-300 mt-12 pt-8 text-center text-yellow-700">
                 <p>© 2025 Deboshree Bose & Zouk Motion. All rights reserved.</p>
             </div>
         </div>
@@ -327,10 +337,17 @@
         feather.replace();
         
         // Mobile menu toggle
-        document.querySelector('[data-feather="menu"]').addEventListener('click', function() {
-            // Add mobile menu functionality here
-            console.log('Mobile menu clicked');
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+
+            // Swap hamburger ↔ close icon
+            const icon = menuBtn.querySelector('i');
+            icon.dataset.feather = mobileMenu.classList.contains('hidden') ? 'menu' : 'x';
+            feather.replace();
         });
-    </script>
+</script>
 </body>
 </html>

@@ -283,8 +283,8 @@ def logout():
 @app.route('/purchase', methods=['POST'])
 def purchase():
     if 'user_id' not in session:
-        flash("Please log in to reserve a spot.")
-        return redirect(url_for('login'))
+        flash("⚡ Let’s dance! Reserve your spot by filling in your details. Already part of the crew? Log in first!")
+        return redirect(url_for('signup'))
 
     plan_name = request.form.get('plan_name')
     if not plan_name:
@@ -298,7 +298,7 @@ def purchase():
 def confirm_purchase():
     if 'user_id' not in session:
         flash("Please log in first.")
-        return redirect(url_for('login'))
+        return redirect(url_for('signup'))
 
     plan_name = session.get('pending_plan')
     if not plan_name:
