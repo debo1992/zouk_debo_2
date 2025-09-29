@@ -12,30 +12,30 @@
   <!-- NAV -->
   <nav class="bg-black shadow-lg sticky top-0 z-50">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex justify-between h-16">
+      <div class="flex justify-between h-26">
         <div class="flex items-center">
           <div class="flex flex-col items-center mt-6">
               <img class="h-12 w-auto" src="{{ url_for('static', filename='logo.png') }}" alt="Zouk Motion Logo">
-              <span class="mt-2 text-xl font-bold text-center">
+              <span class="-mt-1 text-xl font-bold text-center">
                   <span class="text-yellow-300">ZOUK</span> 
                   <span class="text-lime-300">MOTION</span>
               </span>
           </div>
         </div>
         <div class="hidden md:flex items-center space-x-8">
-          <a href="{{ url_for('home') }}" class="nav-link px-3 py-2 text-sm font-medium text-lime-500 hover:text-yellow-500">Home</a>
-          <a href="{{ url_for('home') }}#benefits" class="nav-link px-3 py-2 text-sm font-medium text-lime-500 hover:text-yellow-500">About</a>
-          <a href="{{ url_for('timetable') }}" class="nav-link px-3 py-2 text-sm font-medium text-lime-500 hover:text-yellow-500">Timetable</a>
-          <a href="{{ url_for('pricing') }}" class="nav-link px-3 py-2 text-sm font-medium text-lime-500 hover:text-yellow-500">Plans & Pricing</a>
-          <a href="{{ url_for('home') }}#upcoming-events" class="nav-link px-3 py-2 text-sm font-medium text-lime-500 hover:text-yellow-500">Events</a>
-          <a href="{{ url_for('home') }}#footer" class="nav-link px-3 py-2 text-sm font-medium text-lime-500 hover:text-yellow-500">Contact</a>
-          <a href="#" class="px-4 py-2 text-sm font-medium text-black bg-yellow-500 rounded-md hover:bg-lime-500 transition duration-300">Login</a>
+          <a href="{{ url_for('home') }}" class="nav-link px-3 py-2 text-sm font-medium text-lime-300 hover:text-yellow-300">Home</a>
+          <a href="{{ url_for('home') }}#benefits" class="nav-link px-3 py-2 text-sm font-medium text-lime-300 hover:text-yellow-300">About</a>
+          <a href="{{ url_for('timetable') }}" class="nav-link px-3 py-2 text-sm font-medium text-lime-300 hover:text-yellow-300">Timetable</a>
+          <a href="{{ url_for('pricing') }}" class="nav-link px-3 py-2 text-sm font-medium text-lime-300 hover:text-yellow-300">Plans & Pricing</a>
+          <a href="{{ url_for('home') }}#upcoming-events" class="nav-link px-3 py-2 text-sm font-medium text-lime-300 hover:text-yellow-300">Events</a>
+          <a href="{{ url_for('home') }}#footer" class="nav-link px-3 py-2 text-sm font-medium text-lime-300 hover:text-yellow-300">Contact</a>
+          <a href="#" class="px-4 py-2 text-sm font-medium text-black bg-yellow-300 rounded-md hover:bg-lime-300 transition duration-300">Login</a>
         </div>
       </div>
     </div>  
   </nav>
   <br><br>
-    <h2 class="text-lime-500 font-semibold mb-8 text-lg">Welcome, Create Your Account Here!</h2>
+    <h2 class="text-lime-300 font-semibold mb-8 text-lg">Welcome, Create Your Account Here!</h2>
     <form action="/signup" method="POST">
       <label for="name">Full Name:</label><br>
       <input type="text" id="name" name="name" required><br>
@@ -53,11 +53,11 @@
       <label for="phone">Phone Number (optional):</label><br>
       <input type="tel" id="phone" name="phone"><br>
   
-      <label for="level" class="block mb-2 text-sm font-medium text-lime-500">
+      <label for="level" class="block mb-2 text-sm font-medium text-lime-300">
         What are you interested in booking?
       </label>
       <select id="level" name="level"
-              class="w-full px-4 py-2 rounded-md bg-gray-900 text-white border border-gray-700 focus:border-lime-500 focus:ring-lime-500 focus:ring-2">
+              class="w-full px-4 py-2 rounded-md bg-gray-900 text-white border border-gray-700 focus:border-lime-300 focus:ring-lime-300 focus:ring-2">
           <option>My trial class!</option>
           <option>Zouk Lover</option>
           <option>Zouk Fan</option>

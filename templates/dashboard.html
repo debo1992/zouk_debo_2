@@ -24,7 +24,7 @@
             margin-bottom: 1.5rem;
             font-size: 1.1rem;
         }
-        .text-lime-500 { color: #c1ff72; }
+        .text-lime-300 { color: #c1ff72; }
         .hero-gradient { background: linear-gradient(#000000 0%, #111827 100%); }
         .nav-link:hover {
             color: #FFD700;
@@ -41,24 +41,24 @@
     <!-- Navigation -->
     <nav class="bg-black shadow-lg sticky top-0 z-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between h-16">
+            <div class="flex justify-between h-26">
                 <div class="flex items-center">
                     <div class="flex flex-col items-center mt-6">
                         <img class="h-12 w-auto" src="{{ url_for('static', filename='logo.png') }}" alt="Zouk Motion Logo">
-                        <span class="mt-2 text-xl font-bold text-center">
+                        <span class="-mt-1 text-xl font-bold text-center">
                             <span class="text-yellow-300">ZOUK</span> 
                             <span class="text-lime-300">MOTION</span>
                         </span>
                     </div>
                 </div>
                 <div class="hidden md:flex items-center space-x-8">
-                    <a href="{{ url_for('home') }}" class="nav-link px-3 py-2 text-sm font-medium text-lime-500 hover:text-yellow-500">Home</a>
-                    <a href="{{ url_for('dashboard') }}" class="nav-link px-3 py-2 text-sm font-medium text-lime-500 hover:text-yellow-500">Dashboard</a>
-                    <a href="{{ url_for('timetable') }}" class="nav-link px-3 py-2 text-sm font-medium text-lime-500 hover:text-yellow-500">Timetable</a>
-                    <a href="{{ url_for('pricing') }}" class="nav-link px-3 py-2 text-sm font-medium text-lime-500 hover:text-yellow-500">Plans & Pricing</a>
-                    <a href="{{ url_for('home') }}#upcoming-events" class="nav-link px-3 py-2 text-sm font-medium text-lime-500 hover:text-yellow-500">Events</a>
-                    <a href="{{ url_for('home') }}#footer" class="nav-link px-3 py-2 text-sm font-medium text-lime-500 hover:text-yellow-500">Contact</a>
-                    <a href="{{ url_for('login') }}" class="px-4 py-2 text-sm font-medium text-black bg-yellow-500 rounded-md hover:bg-lime-500 transition duration-300">Logout</a>
+                    <a href="{{ url_for('home') }}" class="nav-link px-3 py-2 text-sm font-medium text-lime-300 hover:text-yellow-300">Home</a>
+                    <a href="{{ url_for('dashboard') }}" class="nav-link px-3 py-2 text-sm font-medium text-lime-300 hover:text-yellow-300">Dashboard</a>
+                    <a href="{{ url_for('timetable') }}" class="nav-link px-3 py-2 text-sm font-medium text-lime-300 hover:text-yellow-300">Timetable</a>
+                    <a href="{{ url_for('pricing') }}" class="nav-link px-3 py-2 text-sm font-medium text-lime-300 hover:text-yellow-300">Plans & Pricing</a>
+                    <a href="{{ url_for('home') }}#upcoming-events" class="nav-link px-3 py-2 text-sm font-medium text-lime-300 hover:text-yellow-300">Events</a>
+                    <a href="{{ url_for('home') }}#footer" class="nav-link px-3 py-2 text-sm font-medium text-lime-300 hover:text-yellow-300">Contact</a>
+                    <a href="{{ url_for('logout') }}" class="px-4 py-2 text-sm font-medium text-black bg-yellow-300 rounded-md hover:bg-lime-300 transition duration-300">Logout</a>
                 </div>
                 <div class="md:hidden flex items-center">
                     <button class="text-gray-500 hover:text-gray-900 focus:outline-none">
@@ -68,8 +68,8 @@
             </div>
         </div>
     </nav>
-
-    <h1 class="text-white md:text-6xl font-bold mb-6">Welcome {{ username }}!</h1>
+    <br><br>
+    <h1 class="text-yellow-300 md:text-6xl font-bold mb-6">Welcome {{ username }}!</h1>
 
     {% if is_admin %}
         <!-- Admin Section -->
@@ -127,7 +127,7 @@
 
             <!-- My Purchases -->
             <div class="bg-gray-900 p-6 rounded-2xl shadow-lg">
-                <h2 class="text-2xl font-bold text-lime-500 mb-4">My Purchases</h2>
+                <h2 class="text-2xl font-bold text-lime-300 mb-4">My Purchases</h2>
                 {% if purchases %}
                     <ul class="list-disc list-inside space-y-2 text-gray-300">
                         {% for purchase in purchases %}
@@ -144,7 +144,7 @@
 
             <!-- Right Column: My Bookings -->
 <div class="bg-gray-900 p-6 rounded-2xl shadow-lg">
-    <h2 class="text-2xl font-bold text-lime-500 mb-4">My Bookings</h2>
+    <h2 class="text-2xl font-bold text-lime-300 mb-4">My Bookings</h2>
 
     {% if bookings %}
     <div class="overflow-x-auto">

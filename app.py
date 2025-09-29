@@ -149,8 +149,8 @@ def generate_wednesdays():
 @app.route("/timetable")
 def timetable():
     if "user_id" not in session:
-        flash("Please log in first.")
-        return redirect(url_for("login"))
+        flash("Join us! Or if you are with us already, please login!")
+        return redirect(url_for("signup"))
 
     user = User.query.get(session["user_id"])
     dates = generate_wednesdays()
@@ -272,12 +272,15 @@ def cancel_class():
 
 
 
-
-@app.route('/logout')
+@app.route("/logout")
 def logout():
+    # Clear session
     session.clear()
-    flash('You have been logged out.')
-    return redirect(url_for('login'))
+    # Flash message
+    flash("👋 You’ve been logged out. See you back on the dance floor soon!", "info")
+    
+    # Redirect to home or login
+    return redirect(url_for("home"))
 
 
 @app.route('/purchase', methods=['POST'])
