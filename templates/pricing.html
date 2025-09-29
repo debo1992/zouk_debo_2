@@ -136,12 +136,13 @@
 
     <!-- Casual Drop In -->
     <div class="bg-white text-black rounded-xl shadow-lg p-6 border-t-8 border-gray-600">
-      <h2 class="text-xl font-bold text-center mb-4">Casual Drop In</h2>
+      <h2 class="text-xl font-bold text-center mb-4">Casual Drop - In</h2>
       <p class="text-3xl font-bold text-center text-gray-800 mb-4">$24</p>
       <ul class="text-sm mb-6 space-y-2">
         <li>• $24 per class</li>
         <li>• Suitable for those who want to do the occasional class</li>
       </ul>
+      <br>
       <form action="{{ url_for('purchase') }}" method="POST">
         <input type="hidden" name="plan_name" value="Casual Drop In">
         <button type="submit" class="block w-full text-gray-800 border border-gray-800 py-2 rounded-full font-semibold hover:bg-gray-100 transition">
@@ -152,7 +153,7 @@
   </div>
 
   <!-- FOOTER -->
-  <footer id="footer" class="bg-black text-center py-6 text-gray-400 border-t border-gray-800">
+  <footer id="footer" class="bg-black text-center py-6 text-yellow-300 border-t border-yellow-300">
     <p>&copy; 2025 Deboshree & Zouk Motion. Content and design are protected.</p>
   </footer>
 
