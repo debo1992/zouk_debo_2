@@ -16,6 +16,10 @@
             background-color: #000;
             line-height: 1.6;
             color: #e2e8f0;
+            overflow-x: hidden;
+        }
+        html {
+            overflow-x: hidden;   /* 🚀 Extra safeguard */
         }
         h1, h2, h3, h4, h5, h6 {
             line-height: 1.3;
@@ -63,7 +67,7 @@
                     <a href="{{ url_for('pricing') }}" class="nav-link px-3 py-2 text-sm font-medium text-lime-300 hover:text-yellow-300">Plans & Pricing</a>
                     <a href="{{ url_for('home') }}#upcoming-events" class="nav-link px-3 py-2 text-sm font-medium text-lime-300 hover:text-yellow-300">Events</a>                  
                     <a href="{{ url_for('home') }}#footer" class="nav-link px-3 py-2 text-sm font-medium text-lime-300 hover:text-yellow-300">Contact</a>
-                    <a href="{{ url_for('login') }}" class="px-4 py-2 text-sm font-medium text-black bg-yellow-300 rounded-md hover:bg-lime-300 transition duration-300">Logout </a>
+                    <a href="{{ url_for('logout') }}" class="px-4 py-2 text-sm font-medium text-black bg-yellow-300 rounded-md hover:bg-lime-300 transition duration-300">Logout </a>
                 </div>
                 <div class="md:hidden flex items-center">
                     <button class="text-gray-500 hover:text-gray-900 focus:outline-none">

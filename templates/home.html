@@ -16,6 +16,10 @@
             background-color: #000;
             line-height: 1.6;
             color: #e2e8f0;
+            overflow-x: hidden;
+        }
+        html {
+            overflow-x: hidden;   /* 🚀 Extra safeguard */
         }
         h1, h2, h3, h4, h5, h6 {
             line-height: 1.3;
@@ -75,7 +79,7 @@
                     <a href="{{ url_for('login') }}" class="px-4 py-2 text-sm font-medium text-black bg-yellow-300 rounded-md hover:bg-lime-300 transition duration-300">Login </a>
                 </div>
                 <div class="md:hidden flex items-center">
-                    <button class="text-gray-300 hover:text-gray-900 focus:outline-none">
+                    <button id="menu-btn" class="text-gray-300 hover:text-gray-900 focus:outline-none">
                         <i data-feather="menu"></i>
                     </button>
                 </div>
@@ -111,16 +115,16 @@
 
       <!-- Right Carousel -->
       <div class="md:w-1/2" data-aos="fade-left">
-        <div class="swiper mySwiper rounded-lg shadow-2xl">
+        <div class="swiper mySwiper rounded-lg shadow-2xl max-h-[400px]">
           <div class="swiper-wrapper">
             <div class="swiper-slide">
-              <img src="{{ url_for('static', filename='class_photo.jpg') }}" alt="Zouk dancers 1" class="w-full h-auto rounded-lg">
+              <img src="{{ url_for('static', filename='class_photo.jpg') }}" loading="lazy" alt="Zouk dancers 1" class="w-full h-auto rounded-lg">
             </div>
             <div class="swiper-slide">
-              <img src="{{ url_for('static', filename='partner.jpg') }}" alt="Zouk dancers 2" class="w-full h-auto rounded-lg">
+              <img src="{{ url_for('static', filename='partner.jpg') }}" loading="lazy" alt="Zouk dancers 2" class="w-full h-auto rounded-lg">
             </div>
             <div class="swiper-slide">
-              <img src="{{ url_for('static', filename='partnerwork.jpg') }}" alt="Zouk dancers 3" class="w-full h-auto rounded-lg">
+              <img src="{{ url_for('static', filename='partnerwork.jpg') }}" loading="lazy" alt="Zouk dancers 3" class="w-full h-auto rounded-lg">
             </div>
           </div>
           <!-- Pagination + Arrows -->
@@ -237,7 +241,7 @@
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <div class="bg-gray-900 p-8 rounded-lg" data-aos="fade-up">
                     <div class="flex items-center mb-4">
-                        <img src="http://static.photos/people/200x200/1" alt="Testimonial" class="w-12 h-12 rounded-full mr-4">
+                        <img src="{{ url_for('static', filename='debo_review.png') }}" alt="Testimonial" class="w-24 h-24 rounded-full mr-4">
                         <div>
                             <h4 class="font-bold text-lime-500">Kaliya</h4>
                             <p class="text-sm text-lime-500">Student for 3 months</p>
@@ -254,13 +258,13 @@
                 </div>
                 <div class="bg-gray-900 p-8 rounded-lg" data-aos="fade-up" data-aos-delay="100">
                     <div class="flex items-center mb-4">
-                        <img src="http://static.photos/people/200x200/2" alt="Testimonial" class="w-12 h-12 rounded-full mr-4">
+                        <img src="http://static.photos/people/200x200/2" alt="Testimonial" class="w-24 h-24 rounded-full mr-4">
                         <div>
                             <h4 class="font-bold text-lime-500">Sally</h4>
-                            <p class="text-sm text-lime-500">Student for 2 years</p>
+                            <p class="text-sm text-lime-500">Student for 1 year</p>
                         </div>
                     </div>
-                    <p class="text-lime-300">"I never thought I could dance, but Zouk Motion made it possible. Their step-by-step approach is perfect for beginners."</p>
+                    <p class="text-lime-300">"Matt is an incredible Zouk teacher! He’s very detail-oriented and really takes the time to break things down in a way that makes sense. His focus on the foundations helps students build strong technique and confidence on the dance floor. Whether you’re new to Zouk or looking to refine your skills, Matt creates a supportive and motivating environment that makes learning both fun and rewarding"</p>
                     <div class="flex mt-4 text-yellow-400">
                         <i data-feather="star" class="w-4 h-4 fill-current"></i>
                         <i data-feather="star" class="w-4 h-4 fill-current"></i>
@@ -271,7 +275,7 @@
                 </div>
                 <div class="bg-gray-900 p-8 rounded-lg" data-aos="fade-up" data-aos-delay="200">
                     <div class="flex items-center mb-4">
-                        <img src="http://static.photos/people/200x200/3" alt="Testimonial" class="w-12 h-12 rounded-full mr-4">
+                        <img src="http://static.photos/people/200x200/3" alt="Testimonial" class="w-24 h-24 rounded-full mr-4">
                         <div>
                             <h4 class="font-bold text-lime-500">Noel</h4>
                             <p class="text-sm text-lime-500">Student for 3 years</p>
@@ -381,6 +385,7 @@
         });
 </script>
 <script>
+
   var swiper = new Swiper(".mySwiper", {
     loop: true,
     autoplay: {
@@ -395,7 +400,10 @@
       nextEl: ".swiper-button-next",
       prevEl: ".swiper-button-prev",
     },
+    observer: true,
+    observeParents: true,
   });
+
 </script>
 
 </body>
