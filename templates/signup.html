@@ -37,21 +37,21 @@
   <br><br>
     <h2 class="text-lime-300 font-semibold mb-8 text-lg">Welcome, Create Your Account Here!</h2>
     <form action="/signup" method="POST">
-      <label for="name">Full Name:</label><br>
-      <input type="text" id="name" name="name" required><br>
+      <label for="name" class="text-lime-300">Full Name:</label><br>
+      <input type="text" id="name" name="name" required class="text-black bg-white p-2 rounded"><br>
   
-      <label for="email">Email Address:</label><br>
-      <input type="email" id="email" name="email" required><br>
+      <label for="email" class="text-lime-300">Email Address:</label><br>
+      <input type="email" id="email" name="email" required class="text-black bg-white p-2 rounded"><br>
   
-      <label for="password">Password:</label><br>
-      <input type="password" id="password" name="password" required><br>
+      <label for="password" class="text-lime-300">Password:</label><br>
+      <input type="password" id="password" name="password" required class="text-black bg-white p-2 rounded"><br>
   
-      <label for="confirm_password">Confirm Password:</label><br>
-      <input type="password" id="confirm_password" name="confirm_password" required><br>
+      <label for="confirm_password" class="text-lime-300">Confirm Password:</label><br>
+      <input type="password" id="confirm_password" name="confirm_password" required class="text-black bg-white p-2 rounded"><br>
   
       <!-- Optional fields -->
-      <label for="phone">Phone Number (optional):</label><br>
-      <input type="tel" id="phone" name="phone"><br>
+      <label for="phone" class="text-lime-300">Phone Number (optional):</label><br>
+      <input type="tel" id="phone" name="phone" class="text-black bg-white p-2 rounded"><br>
   
       <label for="level" class="block mb-2 text-sm font-medium text-lime-300">
         What are you interested in booking?
@@ -67,10 +67,10 @@
       </select>
       <br><br>
   
-      <button type="submit">Sign Up</button>
-  </form>
+      <button type="submit" class="px-4 py-2 text-sm font-medium text-black bg-yellow-300 rounded-md hover:bg-lime-300 transition duration-300">Sign Up</button>
+  </form> <br>
   
-    <p>Already have an account? <a href="{{ url_for('login') }}">Login here</a></p>
+    <p>Already have an account? <a href="{{ url_for('login') }}" class="px-4 py-2 text-sm font-medium text-black bg-yellow-300 rounded-md hover:bg-lime-300 transition duration-300">Login</a></p>
 
     {% with messages = get_flashed_messages() %}
       {% if messages %}

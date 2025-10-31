@@ -98,7 +98,6 @@
     </nav>
 
     <!-- Hero Section -->
-    <!-- Hero Section -->
 <section class="hero-gradient text-lime-300 py-20">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex flex-col md:flex-row items-center">
@@ -107,9 +106,10 @@
       <div class="md:w-1/2 mb-10 md:mb-0" data-aos="fade-right">
         <h1 class="text-4xl md:text-6xl font-bold mb-6">Welcome Zouk Lovers!</h1>
         <p class="text-xl mb-8 leading-relaxed">Discover the best of Zouk, your go-to destination for music, dance, and culture.</p>
-        <div class="flex space-x-4">
-          <a href="{{ url_for('signup') }}" class="px-8 py-3 bg-lime-300 text-black font-bold rounded-full hover:bg-lime-300 hover:text-black transition duration-300">Join Now</a>
-          <a href="#benefits" class="px-8 py-3 border-2 border-yellow-300 text-lime-300 font-bold rounded-full hover:bg-lime-300 hover:text-black transition duration-300">Learn More</a>
+        <div class="fixed space-x-4">
+            <div class="fixed top-4 right-6 z-50"></div>
+            <a href="{{ url_for('signup') }}" class="px-8 py-3 bg-lime-300 text-black font-bold rounded-full hover:bg-lime-300 hover:text-black transition duration-300">Join Now</a>
+            <a href="#benefits" class="px-8 py-3 border-2 border-yellow-300 text-lime-300 font-bold rounded-full hover:bg-lime-300 hover:text-black transition duration-300">Learn More</a>
         </div>
       </div>
 
@@ -181,52 +181,54 @@
     </section>
 
     <!-- Featured Events -->
-    <section id="upcoming-events" class="py-20 bg-gray-100">
+    <section id="upcoming-events" class="py-10 bg-gray-100">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl font-bold text-gray-800 mb-4">Upcoming Events</h2>
+            <div class="text-center mb-6">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">Upcoming Classes</h2>
                 <div class="w-24 h-1 bg-yellow-300 mx-auto"></div>
             </div>
+            <div class="text-center mt-2">
+                <a href="#" class="px-8 py-3 bg-yellow-300 text-black font-bold inline-block">Generally, in our classes each week, we focus on a particular theme (e.g. a particular foundation structure, or musicality etc), using the Fundamental and Drills Class to revise or introduce the concept, then exploring applications or variations of that concept in our Level 2 and 3 classes. </a>
+            </div>
+            <br>
+
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <div class="bg-white rounded-lg overflow-hidden shadow-lg" data-aos="zoom-in">
                     <img src="{{ url_for('static', filename='heeheee.jpg') }}" alt="Zouk workshop" class="w-full h-48 object-cover">
                     <div class="p-6">
                         <div class="flex justify-between items-center mb-2">
-                            <span class="text-sm text-yellow-300 font-semibold">Workshop</span>
-                            <span class="text-sm text-gray-300">June 15, 2025</span>
+                            <span class="text-sm text-yellow-300 font-semibold">Wednesday</span>
+                            <span class="text-sm text-gray-300">7 p.m. - 8 p.m</span>
                         </div>
                         <h3 class="text-xl font-bold mb-2">Zouk Fundamentals</h3>
                         <p class="text-gray-400 mb-4 leading-relaxed">Perfect for beginners to learn the basics of Brazilian Zouk.</p>
-                        <a href="#" class="text-yellow-300 font-medium hover:underline">Learn More →</a>
                     </div>
                 </div>
                 <div class="bg-white rounded-lg overflow-hidden shadow-lg" data-aos="zoom-in" data-aos-delay="100">
                     <img src="http://static.photos/event/640x360/2" alt="Social dance" class="w-full h-48 object-cover">
                     <div class="p-6">
                         <div class="flex justify-between items-center mb-2">
-                            <span class="text-sm text-yellow-300 font-semibold">Social</span>
-                            <span class="text-sm text-gray-300">June 22, 2025</span>
+                            <span class="text-sm text-yellow-300 font-semibold">Wednesday</span>
+                            <span class="text-sm text-gray-300">8 p.m. - 9 p.m.</span>
                         </div>
-                        <h3 class="text-xl font-bold mb-2">Zouk Night Out</h3>
+                        <h3 class="text-xl font-bold mb-2">Level 2</h3>
                         <p class="text-gray-400 mb-4 leading-relaxed">Join us for an evening of dancing and socializing.</p>
-                        <a href="#" class="text-yellow-300 font-medium hover:underline">Learn More →</a>
                     </div>
                 </div>
                 <div class="bg-white rounded-lg overflow-hidden shadow-lg" data-aos="zoom-in" data-aos-delay="200">
                     <img src="http://static.photos/event/640x360/3" alt="Zouk festival" class="w-full h-48 object-cover">
                     <div class="p-6">
                         <div class="flex justify-between items-center mb-2">
-                            <span class="text-sm text-yellow-300 font-semibold">Festival</span>
-                            <span class="text-sm text-gray-300">July 5-7, 2025</span>
+                            <span class="text-sm text-yellow-300 font-semibold">Wednesday</span>
+                            <span class="text-sm text-gray-300">9 p.m. - 10 p.m.</span>
                         </div>
-                        <h3 class="text-xl font-bold mb-2">Zouk Motion Festival</h3>
+                        <h3 class="text-xl font-bold mb-2">Level 3</h3>
                         <p class="text-gray-400 mb-4 leading-relaxed">Our annual celebration of Zouk with international instructors.</p>
-                        <a href="#" class="text-yellow-300 font-medium hover:underline">Learn More →</a>
                     </div>
                 </div>
             </div>
             <div class="text-center mt-12">
-                <a href="#" class="px-8 py-3 bg-yellow-300 text-black font-bold rounded-full hover:bg-lime-300 transition duration-300 inline-block">View All Events</a>
+                <a href="{{ url_for('timetable_nonmembers') }}" class="px-8 py-3 bg-yellow-300 text-black font-bold rounded-full hover:bg-lime-300 transition duration-300 inline-block">View Timetable</a>
             </div>
         </div>
     </section>
@@ -317,8 +319,6 @@
                 <div class="flex space-x-4 mt-6 justify-center md:justify-start">
                 <a href="#" class="text-lime-300 hover:text-white"><i data-feather="facebook"></i></a>
                 <a href="#" class="text-lime-300 hover:text-white"><i data-feather="instagram"></i></a>
-                <a href="#" class="text-lime-300 hover:text-white"><i data-feather="youtube"></i></a>
-                <a href="#" class="text-lime-300 hover:text-white"><i data-feather="twitter"></i></a>
                 </div>
             </div>
 
@@ -328,7 +328,7 @@
                 <ul class="space-y-2">
                 <li><a href="{{ url_for('home') }}" class="text-lime-300 hover:text-white">Home</a></li>
                 <li><a href="#benefits" class="text-lime-300 hover:text-white">About Us</a></li>
-                <li><a href="{{ url_for('timetable') }}" class="text-lime-300 hover:text-white">Timetable</a></li>
+                <li><a href="timetable_nonmembers" class="text-lime-300 hover:text-white">Timetable</a></li>
                 <li><a href= "#upcoming-events" class="text-lime-300 hover:text-white">Events</a></li>
                 <li><a href="{{ url_for('pricing') }}" class="text-lime-300 hover:text-white">Pricing</a></li>
                 </ul>
@@ -356,9 +356,6 @@
             </div>
 
             <!-- Bottom Line -->
-            <div class="border-t border-yellow-300 mt-12 pt-8 text-center text-yellow-300">
-            <p>© 2025 Deboshree Bose & Zouk Motion. All rights reserved.</p>
-            </div>
         </div>
     </footer>
 

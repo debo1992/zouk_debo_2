@@ -145,6 +145,9 @@ def generate_wednesdays():
         start_date += timedelta(days=1)
     return [(start_date + timedelta(weeks=i)).strftime("%Y-%m-%d") for i in range(24)]
 
+@app.route('/timetable_nonmembers')
+def timetable_nonmembers():
+    return render_template('timetable_nonmembers.html')
 
 @app.route("/timetable")
 def timetable():
