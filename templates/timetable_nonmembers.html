@@ -97,109 +97,54 @@
         </div>
     </nav>
 
-    <!-- Main Content -->
-    <div class="container mx-auto px-4 py-12 max-w-6xl">
-        <h1 class="text-4xl font-bold text-lime-300 mb-8 text-center">Class Timetable</h1>
-        
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <!-- Monday Class -->
-            <div class="bg-gray-900 rounded-lg shadow-lg overflow-hidden border-l-4 border-lime-300">
-                <div class="p-6">
-                    <h3 class="text-2xl font-bold text-yellow-300 mb-2">Monday</h3>
-                    <div class="space-y-4">
-                        <div class="border-b border-gray-700 pb-4">
-                            <h4 class="text-xl font-semibold text-lime-300">Zouk Fundamentals</h4>
-                            <p class="text-gray-400">7:00 PM - 8:00 PM</p>
-                            <p class="text-gray-300 mt-2">Perfect for beginners to learn the basics of Brazilian Zouk</p>
-                            <button class="mt-4 bg-lime-300 hover:bg-yellow-300 text-black px-6 py-2 rounded-md font-semibold shadow-md transition w-full">
-                                Book Now
-                            </button>
-                        </div>
-                        <div>
-                            <h4 class="text-xl font-semibold text-lime-300">Level 2</h4>
-                            <p class="text-gray-400">8:00 PM - 9:00 PM</p>
-                            <p class="text-gray-300 mt-2">Intermediate techniques and combinations</p>
-                            <button class="mt-4 bg-lime-300 hover:bg-yellow-300 text-black px-6 py-2 rounded-md font-semibold shadow-md transition w-full">
-                                Book Now
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <div class="container mx-auto px-4 py-12 max-w-5xl">
+      <h1 class="text-4xl font-bold text-lime-300 mb-8 text-center">Class Timetable</h1>
 
-            <!-- Wednesday Class -->
-            <div class="bg-gray-900 rounded-lg shadow-lg overflow-hidden border-l-4 border-lime-300">
-                <div class="p-6">
-                    <h3 class="text-2xl font-bold text-yellow-300 mb-2">Wednesday</h3>
-                    <div class="space-y-4">
-                        <div class="border-b border-gray-700 pb-4">
-                            <h4 class="text-xl font-semibold text-lime-300">Zouk Fundamentals</h4>
-                            <p class="text-gray-400">7:00 PM - 8:00 PM</p>
-                            <p class="text-gray-300 mt-2">Perfect for beginners to learn the basics of Brazilian Zouk</p>
-                            <button class="mt-4 bg-lime-300 hover:bg-yellow-300 text-black px-6 py-2 rounded-md font-semibold shadow-md transition w-full">
-                                Book Now
-                            </button>
-                        </div>
-                        <div>
-                            <h4 class="text-xl font-semibold text-lime-300">Level 3</h4>
-                            <p class="text-gray-400">8:00 PM - 9:00 PM</p>
-                            <p class="text-gray-300 mt-2">Advanced techniques and styling</p>
-                            <button class="mt-4 bg-lime-300 hover:bg-yellow-300 text-black px-6 py-2 rounded-md font-semibold shadow-md transition w-full">
-                                Book Now
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
+      <div class="overflow-x-auto rounded-lg shadow-lg border border-gray-700">
+        <table class="min-w-full bg-gray-900 text-white border-collapse">
+          <thead class="bg-black text-lime-300 border-b border-gray-700">
+            <tr>
+              <th class="px-6 py-3 text-left text-sm font-semibold uppercase">Date</th>
+              <th class="px-6 py-3 text-left text-sm font-semibold uppercase">Weekday</th>
+              <th class="px-6 py-3 text-left text-sm font-semibold uppercase">Class</th>
+              <th class="px-6 py-3 text-left text-sm font-semibold uppercase">Time</th>
+              <th class="px-6 py-3 text-center text-sm font-semibold uppercase">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for date in dates %}
+            <tr class="border-b border-gray-700">
+              <td rowspan="3" class="px-6 py-4 align-top text-yellow-300 font-semibold">{{ date.pretty }}</td>
+              <td rowspan="3" class="px-6 py-4 align-top text-lime-300 font-medium">Wednesday</td>
+              <td class="px-6 py-4">{{ slots[0][0] }}</td>
+              <td class="px-6 py-4 text-gray-300">{{ slots[0][1] }}</td>
+              <td class="px-6 py-4 text-center">
+                <a href="{{ url_for('signup') }}" class="bg-lime-300 hover:bg-yellow-300 text-black px-4 py-2 rounded-md font-semibold transition">Book Now</a>
+              </td>
+            </tr>
 
-            <!-- Friday Class -->
-            <div class="bg-gray-900 rounded-lg shadow-lg overflow-hidden border-l-4 border-lime-300">
-                <div class="p-6">
-                    <h3 class="text-2xl font-bold text-yellow-300 mb-2">Friday</h3>
-                    <div class="space-y-4">
-                        <div class="border-b border-gray-700 pb-4">
-                            <h4 class="text-xl font-semibold text-lime-300">Level 2</h4>
-                            <p class="text-gray-400">7:00 PM - 8:00 PM</p>
-                            <p class="text-gray-300 mt-2">Intermediate techniques and combinations</p>
-                            <button class="mt-4 bg-lime-300 hover:bg-yellow-300 text-black px-6 py-2 rounded-md font-semibold shadow-md transition w-full">
-                                Book Now
-                            </button>
-                        </div>
-                        <div>
-                            <h4 class="text-xl font-semibold text-lime-300">Level 3</h4>
-                            <p class="text-gray-400">8:00 PM - 9:00 PM</p>
-                            <p class="text-gray-300 mt-2">Advanced techniques and styling</p>
-                            <button class="mt-4 bg-lime-300 hover:bg-yellow-300 text-black px-6 py-2 rounded-md font-semibold shadow-md transition w-full">
-                                Book Now
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+            <tr class="border-b border-gray-700">
+              <td class="px-6 py-4">{{ slots[1][0] }}</td>
+              <td class="px-6 py-4 text-gray-300">{{ slots[1][1] }}</td>
+              <td class="px-6 py-4 text-center">
+                <a href="{{ url_for('signup') }}" class="bg-lime-300 hover:bg-yellow-300 text-black px-4 py-2 rounded-md font-semibold transition">Book Now</a>
+              </td>
+            </tr>
 
-        <div class="mt-12 bg-gray-900 rounded-lg shadow-lg p-6 max-w-4xl mx-auto">
-            <h2 class="text-2xl font-bold text-lime-300 mb-4">Weekend Workshops</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div class="border-b border-gray-700 pb-4">
-                    <h3 class="text-xl font-semibold text-yellow-300">Saturday Workshop</h3>
-                    <p class="text-gray-400">2:00 PM - 5:00 PM</p>
-                    <p class="text-gray-300 mt-2">Special monthly workshops focusing on different aspects of Zouk</p>
-                    <button class="mt-4 bg-lime-300 hover:bg-yellow-300 text-black px-6 py-2 rounded-md font-semibold shadow-md transition w-full">
-                        Learn More
-                    </button>
-                </div>
-                <div>
-                    <h3 class="text-xl font-semibold text-yellow-300">Sunday Social</h3>
-                    <p class="text-gray-400">6:00 PM - 10:00 PM</p>
-                    <p class="text-gray-300 mt-2">Practice your moves and meet other Zouk dancers</p>
-                    <button class="mt-4 bg-lime-300 hover:bg-yellow-300 text-black px-6 py-2 rounded-md font-semibold shadow-md transition w-full">
-                        Join Now
-                    </button>
-                </div>
-            </div>
-        </div>
+            <tr class="border-b border-gray-700">
+              <td class="px-6 py-4">{{ slots[2][0] }}</td>
+              <td class="px-6 py-4 text-gray-300">{{ slots[2][1] }}</td>
+              <td class="px-6 py-4 text-center">
+                <a href="{{ url_for('signup') }}" class="bg-lime-300 hover:bg-yellow-300 text-black px-4 py-2 rounded-md font-semibold transition">Book Now</a>
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
     </div>
+
+
     <!-- Footer -->
     <footer id="footer" class="bg-black text-white py-12">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

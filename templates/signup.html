@@ -9,77 +9,138 @@
 </head>
 <body class="bg-black text-white">
 
-  <!-- NAV -->
-  <nav class="bg-black shadow-lg sticky top-0 z-50">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex justify-between h-26">
-        <div class="flex items-center">
-          <div class="flex flex-col items-center mt-6">
-              <img class="h-12 w-auto" src="{{ url_for('static', filename='logo.png') }}" alt="Zouk Motion Logo">
-              <span class="-mt-1 text-xl font-bold text-center">
-                  <span class="text-yellow-300">ZOUK</span> 
-                  <span class="text-lime-300">MOTION</span>
-              </span>
-          </div>
+    <nav class="bg-black shadow-lg sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-26">
+                <div class="flex items-center">
+                    <div class="flex flex-col items-center mt-6">
+                        <img class="h-12 w-auto" src="{{ url_for('static', filename='logo.png') }}" alt="Zouk Motion Logo">
+                        <span class="-mt-1 text-xl font-bold text-center">
+                            <span class="text-yellow-300">ZOUK</span> 
+                            <span class="text-lime-300">MOTION</span>
+                        </span>
+                    </div>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="{{ url_for('home') }}" class="nav-link px-3 py-2 text-sm font-medium text-lime-300 hover:text-yellow-300">Home</a>
+                    <a href="#benefits" class="nav-link px-3 py-2 text-sm font-medium text-lime-300 hover:text-yellow-300">About</a>
+                    <a href="{{ url_for('timetable_nonmembers') }}" class="nav-link px-3 py-2 text-sm font-medium text-lime-300 hover:text-yellow-300">Timetable</a>
+                    <a href="{{ url_for('pricing') }}" class="nav-link px-3 py-2 text-sm font-medium text-lime-300 hover:text-yellow-300">Plans & Pricing</a>
+                    <a href="#upcoming-events" class="nav-link px-3 py-2 text-sm font-medium text-lime-300 hover:text-yellow-300">Events</a>
+                    
+                    <a href="#footer" class="nav-link px-3 py-2 text-sm font-medium text-lime-300 hover:text-yellow-300">Contact</a>
+                    <a href="{{ url_for('login') }}" class="px-4 py-2 text-sm font-medium text-black bg-yellow-300 rounded-md hover:bg-lime-300 transition duration-300">Login </a>
+                </div>
+                <div class="md:hidden flex items-center">
+                    <button id="menu-btn" class="text-gray-300 hover:text-gray-900 focus:outline-none">
+                        <i data-feather="menu"></i>
+                    </button>
+                </div>
+            </div>
         </div>
-        <div class="hidden md:flex items-center space-x-8">
-          <a href="{{ url_for('home') }}" class="nav-link px-3 py-2 text-sm font-medium text-lime-300 hover:text-yellow-300">Home</a>
-          <a href="{{ url_for('home') }}#benefits" class="nav-link px-3 py-2 text-sm font-medium text-lime-300 hover:text-yellow-300">About</a>
-          <a href="{{ url_for('timetable') }}" class="nav-link px-3 py-2 text-sm font-medium text-lime-300 hover:text-yellow-300">Timetable</a>
-          <a href="{{ url_for('pricing') }}" class="nav-link px-3 py-2 text-sm font-medium text-lime-300 hover:text-yellow-300">Plans & Pricing</a>
-          <a href="{{ url_for('home') }}#upcoming-events" class="nav-link px-3 py-2 text-sm font-medium text-lime-300 hover:text-yellow-300">Events</a>
-          <a href="{{ url_for('home') }}#footer" class="nav-link px-3 py-2 text-sm font-medium text-lime-300 hover:text-yellow-300">Contact</a>
-          <a href="#" class="px-4 py-2 text-sm font-medium text-black bg-yellow-300 rounded-md hover:bg-lime-300 transition duration-300">Login</a>
+        <!-- Mobile Dropdown Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-black px-4 pt-4 pb-6 space-y-4">
+            <a href="{{ url_for('home') }}" class="block text-lime-300 hover:text-yellow-300">Home</a>
+            <a href="#benefits" class="block text-lime-300 hover:text-yellow-300">About</a>
+            <a href="{{ url_for('timetable_nonmembers') }}" class="block text-lime-300 hover:text-yellow-300">Timetable</a>
+            <a href="{{ url_for('pricing') }}" class="block text-lime-300 hover:text-yellow-300">Plans & Pricing</a>
+            <a href="#upcoming-events" class="block text-lime-300 hover:text-yellow-300">Events</a>
+            <a href="#footer" class="block text-lime-300 hover:text-yellow-300">Contact</a>
+            <a href="{{ url_for('login') }}" class="block px-4 py-2 bg-yellow-300 text-black font-bold rounded-md hover:bg-lime-300">Login</a>
         </div>
+    </nav>
+
+
+  <!-- MAIN SIGNUP SECTION -->
+<section class="flex flex-col md:flex-row justify-center items-start md:items-center px-8 md:px-20 py-10 space-y-10 md:space-y-0 md:space-x-16">
+  <!-- RIGHT SIDE — TRIAL CLASS INFO -->
+  <div class="w-full md:w-1/2 flex flex-col items-center justify-center text-center bg-gradient-to-b from-gray-800 to-black p-8 rounded-2xl shadow-lg">
+    <h2 class="text-yellow-300 text-2xl font-bold mb-4">Book Your Trial Class!</h2>
+    <p class="text-gray-300 mb-6 max-w-md">
+      No prior experience needed—just bring your energy!
+    </p>
+    <form action="/signup" method="POST" class="space-y-4">
+      <div>
+        <label for="name" class="text-lime-300 block mb-1">Full Name:</label>
+        <input type="text" id="name" name="name" required class="w-full text-black bg-white p-2 rounded">
       </div>
-    </div>  
-  </nav>
-  <br><br>
-    <h2 class="text-lime-300 font-semibold mb-8 text-lg">Welcome, Create Your Account Here!</h2>
-    <form action="/signup" method="POST">
-      <label for="name" class="text-lime-300">Full Name:</label><br>
-      <input type="text" id="name" name="name" required class="text-black bg-white p-2 rounded"><br>
-  
-      <label for="email" class="text-lime-300">Email Address:</label><br>
-      <input type="email" id="email" name="email" required class="text-black bg-white p-2 rounded"><br>
-  
-      <label for="password" class="text-lime-300">Password:</label><br>
-      <input type="password" id="password" name="password" required class="text-black bg-white p-2 rounded"><br>
-  
-      <label for="confirm_password" class="text-lime-300">Confirm Password:</label><br>
-      <input type="password" id="confirm_password" name="confirm_password" required class="text-black bg-white p-2 rounded"><br>
-  
-      <!-- Optional fields -->
-      <label for="phone" class="text-lime-300">Phone Number (optional):</label><br>
-      <input type="tel" id="phone" name="phone" class="text-black bg-white p-2 rounded"><br>
-  
-      <label for="level" class="block mb-2 text-sm font-medium text-lime-300">
-        What are you interested in booking?
-      </label>
-      <select id="level" name="level"
-              class="w-full px-4 py-2 rounded-md bg-gray-900 text-white border border-gray-700 focus:border-lime-300 focus:ring-lime-300 focus:ring-2">
-          <option>My trial class!</option>
+
+      <div>
+        <label for="email" class="text-lime-300 block mb-1">Email Address:</label>
+        <input type="email" id="email" name="email" required class="w-full text-black bg-white p-2 rounded">
+      </div>
+
+      <div>
+        <label for="phone" class="text-lime-300 block mb-1">Phone Number:</label>
+        <input type="tel" id="phone" name="phone" class="w-full text-black bg-white p-2 rounded">
+      </div>
+
+      <button type="submit" class="px-6 py-3 text-sm font-medium text-black bg-yellow-300 rounded-md hover:bg-lime-300 transition duration-300 w-full">
+        Book Trial
+      </button>
+    </form>
+  </div>
+
+  <!-- LEFT SIDE — SIGNUP FORM -->
+  <div class="w-full md:w-1/2 bg-gray-900 p-8 rounded-2xl shadow-lg">
+    <h2 class="text-lime-300 text-2xl font-bold mb-4">Signup Here!</h2>
+    <form action="/signup" method="POST" class="space-y-4">
+      <div>
+        <label for="name" class="text-lime-300 block mb-1">Full Name:</label>
+        <input type="text" id="name" name="name" required class="w-full text-black bg-white p-2 rounded">
+      </div>
+
+      <div>
+        <label for="email" class="text-lime-300 block mb-1">Email Address:</label>
+        <input type="email" id="email" name="email" required class="w-full text-black bg-white p-2 rounded">
+      </div>
+
+      <div>
+        <label for="password" class="text-lime-300 block mb-1">Password:</label>
+        <input type="password" id="password" name="password" required class="w-full text-black bg-white p-2 rounded">
+      </div>
+
+      <div>
+        <label for="confirm_password" class="text-lime-300 block mb-1">Confirm Password:</label>
+        <input type="password" id="confirm_password" name="confirm_password" required class="w-full text-black bg-white p-2 rounded">
+      </div>
+
+      <div>
+        <label for="phone" class="text-lime-300 block mb-1">Phone Number (optional):</label>
+        <input type="tel" id="phone" name="phone" class="w-full text-black bg-white p-2 rounded">
+      </div>
+
+      <div>
+        <label for="level" class="block mb-1 text-lime-300">What are you interested in booking?</label>
+        <select id="level" name="level" class="w-full px-4 py-2 rounded-md bg-gray-800 text-white border border-gray-700 focus:border-lime-300 focus:ring-lime-300 focus:ring-2">
           <option>Zouk Lover</option>
           <option>Zouk Fan</option>
           <option>Zouk Admirer</option>
           <option>Casual Drop-In</option>
           <option>None</option>
-      </select>
-      <br><br>
-  
-      <button type="submit" class="px-4 py-2 text-sm font-medium text-black bg-yellow-300 rounded-md hover:bg-lime-300 transition duration-300">Sign Up</button>
-  </form> <br>
-  
-    <p>Already have an account? <a href="{{ url_for('login') }}" class="px-4 py-2 text-sm font-medium text-black bg-yellow-300 rounded-md hover:bg-lime-300 transition duration-300">Login</a></p>
+        </select>
+      </div>
+
+      <button type="submit" class="px-6 py-3 text-sm font-medium text-black bg-yellow-300 rounded-md hover:bg-lime-300 transition duration-300 w-full">
+        Sign Up
+      </button>
+    </form>
+
+    <p class="mt-4 text-center text-sm">Already have an account?
+      <a href="{{ url_for('login') }}" class="text-yellow-300 hover:text-lime-300 font-semibold">Login</a>
+    </p>
 
     {% with messages = get_flashed_messages() %}
       {% if messages %}
-        <ul>
+        <ul class="mt-4 text-lime-300">
           {% for msg in messages %}
             <li>{{ msg }}</li>
           {% endfor %}
         </ul>
       {% endif %}
     {% endwith %}
+  </div>
+</section>
+
 </body>
 </html>

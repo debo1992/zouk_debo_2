@@ -83,7 +83,7 @@
                 <tr>
                     <th class="px-4 py-2">User</th>
                     <th class="px-4 py-2">Email</th>
-                    <th class="px-4 py-2">Delete Current Package</th>
+                    <th class="px-4 py-2">Current Package</th>
                     <th class="px-4 py-2">Class Credits</th>
                 </tr>
             </thead>
@@ -112,14 +112,40 @@
                         {% endif %}
                     </td>
                     <td class="px-4 py-2">
-                        <span>{{ user.remaining_classes }}</span>
-                        <form action="{{ url_for('add_class_credit', user_id=user.id) }}" method="POST" style="display:inline;" onsubmit="return confirm('Add one class credit to {{ user.name }}?');">
-                            <button type="submit" class="bg-green-600 hover:bg-green-700 text-white px-2 py-1 rounded-md ml-2">+1</button>
-                        </form>
-                        <form action="{{ url_for('remove_class_credit', user_id=user.id) }}" method="POST" style="display:inline;" onsubmit="return confirm('Remove one class credit from {{ user.name }}?');">
-                            <button type="submit" class="bg-red-600 hover:bg-red-700 text-white px-2 py-1 rounded-md ml-2">-1</button>
+                        <form action="{{ url_for('update_class_credit', user_id=user.id) }}" 
+                            method="POST" 
+                            class="inline-flex items-center space-x-2"
+                            onsubmit="return confirm('Update class credits for {{ user.name }}?');">
+
+                            <div class="flex flex-col items-center">
+                                <!-- Increment -->
+                                <button type="submit" name="action" value="add" 
+                                        class="bg-green-600 hover:bg-green-700 text-white px-2 py-1 rounded-t-md w-10 flex justify-center items-center">
+                                    ▲
+                                </button>
+
+                                <!-- Editable input -->
+                                <input type="number" 
+                                    name="remaining_classes" 
+                                    value="{{ user.remaining_classes }}" 
+                                    min="0"
+                                    class="w-10 text-center border border-gray-600 bg-gray-800 text-white focus:ring-2 focus:ring-lime-300 focus:outline-none">
+
+                                <!-- Decrement -->
+                                <button type="submit" name="action" value="remove" 
+                                        class="bg-red-600 hover:bg-red-700 text-white px-2 py-1 rounded-b-md w-10 flex justify-center items-center">
+                                    ▼
+                                </button>
+                            </div>
+
+                            <!-- Save button -->
+                            <button type="submit" name="action" value="save"
+                                    class="bg-lime-500 hover:bg-lime-600 text-black px-3 py-1 rounded-md font-semibold transition ml-2">
+                                Save
+                            </button>
                         </form>
                     </td>
+
                 </tr>
                 {% endfor %}
             </tbody>

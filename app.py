@@ -147,7 +147,20 @@ def generate_wednesdays():
 
 @app.route('/timetable_nonmembers')
 def timetable_nonmembers():
-    return render_template('timetable_nonmembers.html')
+    dates = generate_wednesdays()
+    slots = [
+        ("Fundamentals & Drills", "7pm - 8pm"),
+        ("Level 2", "8pm - 9pm"),
+        ("Level 3", "9pm - 10pm")
+    ]
+    formatted_dates = []
+    for date in dates:
+        dt = datetime.strptime(date, "%Y-%m-%d")  # parse to datetime object
+        formatted_dates.append({
+            "raw": dt.strftime("%Y-%m-%d"),   # backend format
+            "pretty": dt.strftime("%d-%m-%Y") # display format
+        })
+    return render_template('timetable_nonmembers.html', dates=formatted_dates, slots=slots)
 
 @app.route("/timetable")
 def timetable():
@@ -362,17 +375,29 @@ def delete_purchase(purchase_id):
     flash("Purchase deleted successfully.")
     return redirect(url_for('dashboard'))
 
-@app.route('/admin/users/add_class/<int:user_id>', methods=['POST'])
-def add_class_credit(user_id):
+@app.route('/admin/users/update_class/<int:user_id>', methods=['POST'])
+def update_class_credit(user_id):
     if 'username' not in session or session['username'] != "debo_da_zouker":
         flash("Unauthorized access.")
         return redirect(url_for('login'))
 
     user = User.query.get_or_404(user_id)
-    user.remaining_classes += 1
+    action = request.form.get('action')
+    if action == 'add':
+        user.remaining_classes += 1
+    elif action == 'remove':
+        user.remaining_classes = max(0, user.remaining_classes - 1)
+    elif action == 'save':
+        try:
+            new_value = int(request.form.get('remaining_classes', user.remaining_classes))
+            user.remaining_classes = max(0, new_value)
+        except ValueError:
+            flash("Invalid number entered for class credits.")
+
     db.session.commit()
-    flash(f"Added 1 class credit to {user.name}. Total now: {user.remaining_classes}")
+    flash(f"Updated class credits for {user.name}: {user.remaining_classes}")
     return redirect(url_for('dashboard'))
+
 
 @app.route("/mybookings")
 def mybookings():
