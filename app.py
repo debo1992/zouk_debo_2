@@ -10,10 +10,10 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///users.db'
 
 db = SQLAlchemy(app)
 PLAN_CREDITS = {
-    "Zouk Lover": 12,       # up to 12 classes in 4 weeks
-    "Zouk Fan": 12,         # 12 classes, flexible 8 weeks
-    "Zouk Admirer": 6,      # 6 classes
-    "Casual Drop In": 1,    # 1 class
+    "Hip-hop": 12,          # up to 12 classes in 4 weeks
+    "Zouk": 12,             # 12 classes, flexible 8 weeks
+    "Salsa": 6,             # 6 classes
+    "Bachata": 1,           # 1 class
 }
 CANCEL_CUTOFF_HOURS = 1
 TZ = ZoneInfo("Australia/Sydney")

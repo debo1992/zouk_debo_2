@@ -3,8 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zouk Motion | Brazilian Zouk Dance Community</title>
+    <title>ShreeFlows | Dance Community</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              charcoal: "#0F1217",
+              brandteal: "#0D5C63",
+              gold: "#C9A227",
+              energy: "#00B4D8",
+              brandpurple: "#4A2C7A",
+              sage: "#D3DFCF",
+            },
+          },
+        },
+      };
+    </script>
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="https://unpkg.com/feather-icons"></script>
@@ -13,7 +29,7 @@
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
         body {
             font-family: 'Poppins', sans-serif;
-            background-color: #000;
+            background-color: #0F1217;
             line-height: 1.6;
             color: #e2e8f0;
             overflow-x: hidden;
@@ -29,14 +45,14 @@
             margin-bottom: 1.5rem;
             font-size: 1.1rem;
         }
-        .text-lime-300 {
-            color: #c1ff72;
+        .text-gold {
+            color: #C9A227;
         }
         .hero-gradient {
-    background: linear-gradient( #000000 0%, #111827 100%);
+    background: #0F1217;
 }
         .nav-link:hover {
-            color: #FFD700;
+            color: #00B4D8;
             transform: translateY(-2px);
             transition: all 0.3s ease;
         }
@@ -46,31 +62,30 @@
         }
     </style>
 </head>
-<body class="text-gray-800">
+<body class="text-gray-100">
     <!-- Navigation -->
-    <nav class="bg-black shadow-lg sticky top-0 z-50">
+    <nav class="bg-charcoal shadow-lg sticky top-0 z-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-26">
                 <div class="flex items-center">
                     <div class="flex flex-col items-center mt-6">
-                      <img class="h-12 w-auto" src="{{ url_for('static', filename='logo.png') }}" alt="Zouk Motion Logo">
+                      <img class="h-12 w-auto" src="{{ url_for('static', filename='logo.png') }}" alt="ShreeFlows Logo">
                       <span class="-mt-1 text-xl font-bold text-center">
-                          <span class="text-yellow-300">ZOUK</span> 
-                          <span class="text-lime-300">MOTION</span>
+                          <span class="text-sage">ShreeFlows</span>
                       </span>
                   </div>
                 </div>
                 <div class="hidden md:flex items-center space-x-8">
-                    <a href="{{ url_for('home') }}" class="nav-link px-3 py-2 text-sm font-medium text-lime-300 hover:text-yellow-300">Home</a>
-                    <a href="{{ url_for('dashboard') }}" class="nav-link px-3 py-2 text-sm font-medium text-lime-300 hover:text-yellow-300">Dashboard</a>
-                    <a href="{{ url_for('timetable') }}" class="nav-link px-3 py-2 text-sm font-medium text-lime-300 hover:text-yellow-300">Timetable</a>
-                    <a href="{{ url_for('pricing') }}" class="nav-link px-3 py-2 text-sm font-medium text-lime-300 hover:text-yellow-300">Plans & Pricing</a>
-                    <a href="{{ url_for('home') }}#upcoming-events" class="nav-link px-3 py-2 text-sm font-medium text-lime-300 hover:text-yellow-300">Events</a>                  
-                    <a href="{{ url_for('home') }}#footer" class="nav-link px-3 py-2 text-sm font-medium text-lime-300 hover:text-yellow-300">Contact</a>
-                    <a href="{{ url_for('login') }}" class="px-4 py-2 text-sm font-medium text-black bg-yellow-300 rounded-md hover:bg-lime-300 transition duration-300">Logout </a>
+                    <a href="{{ url_for('home') }}" class="nav-link px-3 py-2 text-sm font-medium text-gold hover:text-sage">Home</a>
+                    <a href="{{ url_for('dashboard') }}" class="nav-link px-3 py-2 text-sm font-medium text-gold hover:text-sage">Dashboard</a>
+                    <a href="{{ url_for('timetable') }}" class="nav-link px-3 py-2 text-sm font-medium text-gold hover:text-sage">Timetable</a>
+                    <a href="{{ url_for('pricing') }}" class="nav-link px-3 py-2 text-sm font-medium text-gold hover:text-sage">Styles</a>
+                    <a href="{{ url_for('home') }}#upcoming-events" class="nav-link px-3 py-2 text-sm font-medium text-gold hover:text-sage">Events</a>                  
+                    <a href="{{ url_for('home') }}#footer" class="nav-link px-3 py-2 text-sm font-medium text-gold hover:text-sage">Contact</a>
+                    <a href="{{ url_for('login') }}" class="px-4 py-2 text-sm font-medium text-charcoal bg-energy rounded-md hover:bg-gold transition duration-300">Logout </a>
                 </div>
                 <div class="md:hidden flex items-center">
-                    <button class="text-gray-500 hover:text-gray-900 focus:outline-none">
+                    <button class="text-gray-500 hover:text-charcoal focus:outline-none">
                         <i data-feather="menu"></i>
                     </button>
                 </div>
@@ -79,77 +94,77 @@
     </nav>
 
   <!-- HERO -->
-  <div class="text-center py-10 bg-black">
-    <img src="{{ url_for('static', filename='logo.png') }}" alt="Zouk Motion Logo" class="mx-auto mb-4" style="width: 80px;">
-    <h1 class="text-3xl font-bold text-yellow-400">CLASS <span class="text-lime-300">PACKAGES</span></h1>
+  <div class="text-center py-10 bg-charcoal">
+    <img src="{{ url_for('static', filename='logo.png') }}" alt="ShreeFlows Logo" class="mx-auto mb-4" style="width: 80px;">
+    <h1 class="text-3xl font-bold text-sage">CLASSES <span class="text-gold">Groups</span></h1>
   </div>
 
   <!-- PACKAGES GRID -->
   <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto px-4 pb-20">
 
-    <!-- Zouk Lover -->
-    <div class="bg-white text-black rounded-xl shadow-lg p-6 border-t-8 border-red-500">
-      <h2 class="text-xl font-bold text-center mb-4">Zouk Lover</h2>
-      <p class="text-3xl font-bold text-center text-red-600 mb-4">$200</p>
+    <!-- Hip-hop -->
+    <div class="bg-white text-charcoal rounded-xl shadow-lg p-6 border-t-8 border-red-500">
+      <h2 class="text-xl font-bold text-center mb-4">Hip-hop/House</h2>
+      <p class="text-3xl font-bold text-center text-red-600 mb-4"></p>
       <ul class="text-sm mb-6 space-y-2">
-        <li>• <strong>Unlimited</strong> Classes (up to 12 in total)</li>
-        <li>• Valid for 4 weeks</li>
-        <li>• Cost per class = $16.67</li>
+        <li>• Learn fundamentals</li>
+        <li>• Practice drills</li>
+        <li>• Learn choreography</li>
       </ul>
       <form action="{{ url_for('purchase') }}" method="POST">
-        <input type="hidden" name="plan_name" value="Zouk Lover">
+        <input type="hidden" name="plan_name" value="Hip-hop">
         <button type="submit" class="block w-full text-red-600 border border-red-600 py-2 rounded-full font-semibold hover:bg-red-100 transition">
           Reserve My Spot
         </button>
       </form>
     </div>
 
-    <!-- Zouk Fan -->
-    <div class="bg-white text-black rounded-xl shadow-lg p-6 border-t-8 border-green-600">
-      <h2 class="text-xl font-bold text-center mb-4">Zouk Fan</h2>
-      <p class="text-3xl font-bold text-center text-green-600 mb-4">$220</p>
+    <!-- Zouk -->
+    <div class="bg-white text-charcoal rounded-xl shadow-lg p-6 border-t-8 border-green-600">
+      <h2 class="text-xl font-bold text-center mb-4">Zouk</h2>
+      <p class="text-3xl font-bold text-center text-green-600 mb-4"></p>
       <ul class="text-sm mb-6 space-y-2">
-        <li>• 12 Classes included, use when you want</li>
-        <li>• Valid for 8 weeks</li>
-        <li>• Cost per class = $18.33</li>
+        <li>• Learn fundamentals</li>
+        <li>• Practice drills</li>
+        <li>• Learn choreography</li>
       </ul>
       <form action="{{ url_for('purchase') }}" method="POST">
-        <input type="hidden" name="plan_name" value="Zouk Fan">
+        <input type="hidden" name="plan_name" value="Zouk">
         <button type="submit" class="block w-full text-green-600 border border-green-600 py-2 rounded-full font-semibold hover:bg-green-100 transition">
           Reserve My Spot
         </button>
       </form>
     </div>
 
-    <!-- Zouk Admirer -->
-    <div class="bg-white text-black rounded-xl shadow-lg p-6 border-t-8 border-purple-600">
-      <h2 class="text-xl font-bold text-center mb-4">Zouk Admirer</h2>
-      <p class="text-3xl font-bold text-center text-purple-600 mb-4">$120</p>
+    <!-- Salsa -->
+    <div class="bg-white text-charcoal rounded-xl shadow-lg p-6 border-t-8 border-brandpurple">
+      <h2 class="text-xl font-bold text-center mb-4">Whacking/Locking/Popping</h2>
+      <p class="text-3xl font-bold text-center text-brandpurple mb-4"></p>
       <ul class="text-sm mb-6 space-y-2">
-        <li>• 6 Classes included, use when you want</li>
-        <li>• Valid for 8 weeks</li>
-        <li>• Cost per class = $20</li>
+        <li>• Learn fundamentals</li>
+        <li>• Practice drills</li>
+        <li>• Learn choreography</li>
       </ul>
       <form action="{{ url_for('purchase') }}" method="POST">
-        <input type="hidden" name="plan_name" value="Zouk Admirer">
-        <button type="submit" class="block w-full text-purple-600 border border-purple-600 py-2 rounded-full font-semibold hover:bg-purple-100 transition">
+        <input type="hidden" name="plan_name" value="Salsa">
+        <button type="submit" class="block w-full text-brandpurple border border-brandpurple py-2 rounded-full font-semibold hover:bg-brandpurple/10 transition">
           Reserve My Spot
         </button>
       </form>
     </div>
 
-    <!-- Casual Drop In -->
-    <div class="bg-white text-black rounded-xl shadow-lg p-6 border-t-8 border-gray-600">
-      <h2 class="text-xl font-bold text-center mb-4">Casual Drop - In</h2>
-      <p class="text-3xl font-bold text-center text-gray-800 mb-4">$24</p>
+    <!-- Bachata -->
+    <div class="bg-white text-charcoal rounded-xl shadow-lg p-6 border-t-8 border-gray-600">
+      <h2 class="text-xl font-bold text-center mb-4">Salsa/Bachata</h2>
+      <p class="text-3xl font-bold text-center text-brandteal mb-4"></p>
       <ul class="text-sm mb-6 space-y-2">
-        <li>• $24 per class</li>
-        <li>• Suitable for those who want to do the occasional class</li>
+        <li>• Learn fundamentals</li>
+        <li>• Practice drills</li>
+        <li>• Learn choreography</li>
       </ul>
-      <br>
       <form action="{{ url_for('purchase') }}" method="POST">
-        <input type="hidden" name="plan_name" value="Casual Drop In">
-        <button type="submit" class="block w-full text-gray-800 border border-gray-800 py-2 rounded-full font-semibold hover:bg-gray-100 transition">
+        <input type="hidden" name="plan_name" value="Bachata">
+        <button type="submit" class="block w-full text-brandteal border border-brandteal py-2 rounded-full font-semibold hover:bg-gray-100 transition">
           Reserve My Spot
         </button>
       </form>

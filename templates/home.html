@@ -1,10 +1,27 @@
 <!DOCTYPE html>
-<html lang="en">
+i<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zouk Motion | Brazilian Zouk Dance Community</title>
+    <title>ShreeFlows | Your Local Dance Community</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              charcoal: "#0F1217",
+              brandteal: "#0D5C63",
+              gold: "#C9A227",
+              energy: "#00B4D8",
+              brandpurple: "#4A2C7A",
+              sage: "#D3DFCF",
+              mutedsage: "#99B28F",
+            },
+          },
+        },
+      };
+    </script>
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="https://unpkg.com/feather-icons"></script>
@@ -13,13 +30,13 @@
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
         body {
             font-family: 'Poppins', sans-serif;
-            background-color: #000;
+            background-color: #0F1217;
             line-height: 1.6;
             color: #e2e8f0;
             overflow-x: hidden;
         }
         html {
-            overflow-x: hidden;   /* 🚀 Extra safeguard */
+            overflow-x: hidden;   /* Extra safeguard */
         }
         h1, h2, h3, h4, h5, h6 {
             line-height: 1.3;
@@ -29,14 +46,14 @@
             margin-bottom: 1.5rem;
             font-size: 1.1rem;
         }
-        .text-lime-300 {
-            color: #c1ff72;
+        .text-gold {
+            color: #C9A227;
         }
         .hero-gradient {
-    background: linear-gradient( #000000 0%, #111827 100%);
+    background: #0F1217;
 }
         .nav-link:hover {
-            color: #FFD700;
+            color: #00B4D8;
             transform: translateY(-2px);
             transition: all 0.3s ease;
         }
@@ -54,62 +71,61 @@
     <!-- Swiper JS -->
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 </head>
-<body class="text-gray-800">
+<body class="text-gray-100">
     <!-- Navigation -->
-    <nav class="bg-black shadow-lg sticky top-0 z-50">
+    <nav class="bg-charcoal shadow-lg sticky top-0 z-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-26">
                 <div class="flex items-center">
                     <div class="flex flex-col items-center mt-6">
-                        <img class="h-12 w-auto" src="{{ url_for('static', filename='logo.png') }}" alt="Zouk Motion Logo">
+                        <img class="h-12 w-auto" src="{{ url_for('static', filename='logo.png') }}" alt="ShreeFlows Logo">
                         <span class="-mt-1 text-xl font-bold text-center">
-                            <span class="text-yellow-300">ZOUK</span> 
-                            <span class="text-lime-300">MOTION</span>
+                            <span class="text-sage">ShreeFlows</span> 
                         </span>
                     </div>
                 </div>
                 <div class="hidden md:flex items-center space-x-8">
-                    <a href="{{ url_for('home') }}" class="nav-link px-3 py-2 text-sm font-medium text-lime-300 hover:text-yellow-300">Home</a>
-                    <a href="#benefits" class="nav-link px-3 py-2 text-sm font-medium text-lime-300 hover:text-yellow-300">About</a>
-                    <a href="{{ url_for('timetable') }}" class="nav-link px-3 py-2 text-sm font-medium text-lime-300 hover:text-yellow-300">Timetable</a>
-                    <a href="{{ url_for('pricing') }}" class="nav-link px-3 py-2 text-sm font-medium text-lime-300 hover:text-yellow-300">Plans & Pricing</a>
-                    <a href="#upcoming-events" class="nav-link px-3 py-2 text-sm font-medium text-lime-300 hover:text-yellow-300">Events</a>
+                    <a href="{{ url_for('home') }}" class="nav-link px-3 py-2 text-sm font-medium text-gold hover:text-sage">Home</a>
+                    <a href="#benefits" class="nav-link px-3 py-2 text-sm font-medium text-gold hover:text-sage">About</a>
+                    <a href="{{ url_for('timetable') }}" class="nav-link px-3 py-2 text-sm font-medium text-gold hover:text-sage">Timetable</a>
+                    <a href="{{ url_for('pricing') }}" class="nav-link px-3 py-2 text-sm font-medium text-gold hover:text-sage">Styles</a>
+                    <a href="#upcoming-events" class="nav-link px-3 py-2 text-sm font-medium text-gold hover:text-sage">Events</a>
                     
-                    <a href="#footer" class="nav-link px-3 py-2 text-sm font-medium text-lime-300 hover:text-yellow-300">Contact</a>
-                    <a href="{{ url_for('login') }}" class="px-4 py-2 text-sm font-medium text-black bg-yellow-300 rounded-md hover:bg-lime-300 transition duration-300">Login </a>
+                    <a href="#footer" class="nav-link px-3 py-2 text-sm font-medium text-gold hover:text-sage">Contact</a>
+                    <a href="{{ url_for('login') }}" class="px-4 py-2 text-sm font-medium text-charcoal bg-energy rounded-md hover:bg-gold transition duration-300">Login </a>
                 </div>
                 <div class="md:hidden flex items-center">
-                    <button id="menu-btn" class="text-gray-300 hover:text-gray-900 focus:outline-none">
+                    <button id="menu-btn" class="text-gray-300 hover:text-charcoal focus:outline-none">
                         <i data-feather="menu"></i>
                     </button>
                 </div>
             </div>
         </div>
         <!-- Mobile Dropdown Menu -->
-        <div id="mobile-menu" class="hidden md:hidden bg-black px-4 pt-4 pb-6 space-y-4">
-            <a href="{{ url_for('home') }}" class="block text-lime-300 hover:text-yellow-300">Home</a>
-            <a href="#benefits" class="block text-lime-300 hover:text-yellow-300">About</a>
-            <a href="{{ url_for('timetable') }}" class="block text-lime-300 hover:text-yellow-300">Timetable</a>
-            <a href="{{ url_for('pricing') }}" class="block text-lime-300 hover:text-yellow-300">Plans & Pricing</a>
-            <a href="#upcoming-events" class="block text-lime-300 hover:text-yellow-300">Events</a>
-            <a href="#footer" class="block text-lime-300 hover:text-yellow-300">Contact</a>
-            <a href="{{ url_for('login') }}" class="block px-4 py-2 bg-yellow-300 text-black font-bold rounded-md hover:bg-lime-300">Login</a>
+        <div id="mobile-menu" class="hidden md:hidden bg-charcoal px-4 pt-4 pb-6 space-y-4">
+            <a href="{{ url_for('home') }}" class="block text-gold hover:text-sage">Home</a>
+            <a href="#benefits" class="block text-gold hover:text-sage">About</a>
+            <a href="{{ url_for('timetable') }}" class="block text-gold hover:text-sage">Timetable</a>
+            <a href="{{ url_for('pricing') }}" class="block text-gold hover:text-sage">Styles</a>
+            <a href="#upcoming-events" class="block text-gold hover:text-sage">Events</a>
+            <a href="#footer" class="block text-gold hover:text-sage">Contact</a>
+            <a href="{{ url_for('login') }}" class="block px-4 py-2 bg-energy text-charcoal font-bold rounded-md hover:bg-gold">Login</a>
         </div>
     </nav>
 
     <!-- Hero Section -->
-<section class="hero-gradient text-lime-300 py-20">
+<section class="hero-gradient text-gold py-20">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex flex-col md:flex-row items-center">
       
       <!-- Left Text -->
       <div class="md:w-1/2 mb-10 md:mb-0" data-aos="fade-right">
-        <h1 class="text-4xl md:text-6xl font-bold mb-6">Welcome Zouk Lovers!</h1>
-        <p class="text-xl mb-8 leading-relaxed">Discover the best of Zouk, your go-to destination for music, dance, and culture.</p>
+        <h1 class="text-4xl md:text-6xl font-bold mb-6">Welcome Dancers!</h1>
+        <p class="text-xl mb-8 leading-relaxed">Discover music, dance, and a supportive culture.</p>
         <div class="fixed space-x-4">
             <div class="fixed top-4 right-6 z-50"></div>
-            <a href="{{ url_for('signup') }}" class="px-8 py-3 bg-lime-300 text-black font-bold rounded-full hover:bg-lime-300 hover:text-black transition duration-300">Join Now</a>
-            <a href="#benefits" class="px-8 py-3 border-2 border-yellow-300 text-lime-300 font-bold rounded-full hover:bg-lime-300 hover:text-black transition duration-300">Learn More</a>
+            <a href="{{ url_for('signup') }}" class="px-8 py-3 bg-gold text-charcoal font-bold rounded-full hover:bg-gold hover:text-charcoal transition duration-300">Join Now</a>
+            <a href="#benefits" class="px-8 py-3 border-2 border-energy text-gold font-bold rounded-full hover:bg-gold hover:text-charcoal transition duration-300">Learn More</a>
         </div>
       </div>
 
@@ -118,13 +134,13 @@
         <div class="swiper mySwiper rounded-lg shadow-2xl max-h-[400px]">
           <div class="swiper-wrapper">
             <div class="swiper-slide">
-              <img src="{{ url_for('static', filename='class_photo.jpg') }}" loading="lazy" alt="Zouk dancers 1" class="w-full h-auto rounded-lg">
+              <img src="{{ url_for('static', filename='carousel_1.jpg') }}" loading="lazy" alt="Dancers 1" class="w-full h-auto rounded-lg">
             </div>
             <div class="swiper-slide">
-              <img src="{{ url_for('static', filename='partner.jpg') }}" loading="lazy" alt="Zouk dancers 2" class="w-full h-auto rounded-lg">
+              <img src="{{ url_for('static', filename='carousel_2.jpg') }}" loading="lazy" alt="Dancers 2" class="w-full h-auto rounded-lg">
             </div>
             <div class="swiper-slide">
-              <img src="{{ url_for('static', filename='partnerwork.jpg') }}" loading="lazy" alt="Zouk dancers 3" class="w-full h-auto rounded-lg">
+              <img src="{{ url_for('static', filename='carousel_3.jpg') }}" loading="lazy" alt="Dancers 3" class="w-full h-auto rounded-lg">
             </div>
           </div>
           <!-- Pagination + Arrows -->
@@ -140,13 +156,13 @@
 
 
     <!-- Benefits Section -->
-    <section id="benefits" class="py-20 bg-black">
+    <section id="benefits" class="py-20 bg-charcoal">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
-                <h2 class="text-4xl font-bold  text-yellow-300 mb-6">Why Dance With Us?</h2>
-                <section class="bg-gradient-to-b from-gray-900 to-gray-800 text-gray-100 py-20">
-  <h2 class="text-xl md:text-3xl font-extrabold tracking-tight text-lime-300 -mt-8">
-        ✨ Meet Matthew Chen ✨
+                <h2 class="text-4xl font-bold  text-sage mb-6">Why Dance With Us?</h2>
+                <section class="bg-charcoal text-gray-100 py-20">
+  <h2 class="text-xl md:text-3xl font-extrabold tracking-tight text-gold -mt-8">
+        ✨ Meet Deboshree Bose ✨
     </h2><br>
     <div class="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 items-center gap-12">
     
@@ -155,25 +171,31 @@
 
       <!-- Intro Paragraph -->
       <p class="text-lg md:text-lg leading-relaxed text-gray-300">
-        Matthew Chen is a renowned <span class="font-semibold text-lime-300">Brazilian Zouk instructor</span> 
-        celebrated for his precision, expressive artistry, and deep connection to the essence of the dance. 
-        With years of experience teaching and performing across the Asia–Pacific, Matthew brings a rare blend 
-        of clarity, energy, and elegance to every class.
+        Dance for Deboshree is a way to explore rhythm, connection, and expression across different styles.
+        She's drawn to hip-hop for its groove and individuality, Bollywood for its energy and storytelling,
+        and <span class="font-semibold text-gold">Brazilian Zouk</span> for its fluidity and focus on
+        partner connection.
       </p>
 
       <!-- Middle Paragraph -->
       <p class="text-lg md:text-lg leading-relaxed text-gray-300">
-        Whether you’re stepping onto the floor for the first time or refining advanced technique, 
-        Matthew’s teaching nurtures confidence, musicality, and authentic partner connection. 
-        His unique approach combines strong foundations with artistic freedom—empowering every dancer 
-        to discover their own voice through movement.
+        Her background in swimming has shaped a strong sense of discipline, body awareness, and control,
+        which she brings into her dance training. She's currently focused on building stronger foundations,
+        improving musicality, and developing more ease and clarity in movement across styles.
+      </p>
+
+      <!-- Closing Paragraph -->
+      <p class="text-lg md:text-lg leading-relaxed text-gray-300">
+        She approaches dance as an ongoing practice: balancing technical improvement with creativity and
+        curiosity. Whether learning choreography or social dancing, she's interested in growth, collaboration,
+        and becoming more expressive and intentional in her movement.
       </p>
     </div>
 
     <!-- RIGHT: IMAGE -->
     <div class="flex justify-center md:justify-end">
-      <img src="{{ url_for('static', filename='matthew_scratching.png') }}" 
-           alt="Matthew Chen - Zouk Instructor" 
+      <img src="{{ url_for('static', filename='debo_about.jpg') }}"
+           alt="Deboshree Bose - Zouk Instructor" 
            class="rounded-2xl shadow-lg w-80 md:w-96">
     </div>
 
@@ -184,11 +206,11 @@
     <section id="upcoming-events" class="py-10 bg-gray-100">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-6">
-                <h2 class="text-3xl font-bold text-gray-800 mb-4">Upcoming Classes</h2>
-                <div class="w-24 h-1 bg-yellow-300 mx-auto"></div>
+                <h2 class="text-3xl font-bold text-brandteal mb-4">Upcoming Classes</h2>
+                <div class="w-24 h-1 bg-energy mx-auto"></div>
             </div>
             <div class="text-center mt-2">
-                <a href="#" class="px-8 py-3 bg-yellow-300 text-black font-bold inline-block">Generally, in our classes each week, we focus on a particular theme (e.g. a particular foundation structure, or musicality etc), using the Fundamental and Drills Class to revise or introduce the concept, then exploring applications or variations of that concept in our Level 2 and 3 classes. </a>
+                <a href="#" class="px-8 py-3 bg-energy text-charcoal font-bold inline-block">Generally, in our classes each week, we focus on a particular theme (e.g. a particular foundation structure, or musicality etc), using the Fundamental and Drills Class to revise or introduce the concept, then exploring applications or variations of that concept in our Level 2 and 3 classes. </a>
             </div>
             <br>
 
@@ -197,60 +219,60 @@
                     <img src="{{ url_for('static', filename='heeheee.jpg') }}" alt="Zouk workshop" class="w-full h-48 object-cover">
                     <div class="p-6">
                         <div class="flex justify-between items-center mb-2">
-                            <span class="text-sm text-yellow-300 font-semibold">Wednesday</span>
-                            <span class="text-sm text-gray-300">7 p.m. - 8 p.m</span>
+                            <span class="text-sm text-sage font-semibold">Wednesday</span>
+                            <span class="text-sm text-mutedsage">7 p.m. - 8 p.m</span>
                         </div>
                         <h3 class="text-xl font-bold mb-2">Zouk Fundamentals & Drills</h3>
-                        <p class="text-gray-400 mb-4 leading-relaxed">Perfect for beginners to learn the basics of Brazilian Zouk.</p>
+                        <p class="text-mutedsage mb-4 leading-relaxed">Perfect for beginners to learn the basics of Brazilian Zouk.</p>
                     </div>
                 </div>
                 <div class="bg-white rounded-lg overflow-hidden shadow-lg" data-aos="zoom-in" data-aos-delay="100">
                     <img src="http://static.photos/event/640x360/2" alt="Social dance" class="w-full h-48 object-cover">
                     <div class="p-6">
                         <div class="flex justify-between items-center mb-2">
-                            <span class="text-sm text-yellow-300 font-semibold">Wednesday</span>
-                            <span class="text-sm text-gray-300">8 p.m. - 9 p.m.</span>
+                            <span class="text-sm text-sage font-semibold">Wednesday</span>
+                            <span class="text-sm text-mutedsage">8 p.m. - 9 p.m.</span>
                         </div>
                         <h3 class="text-xl font-bold mb-2">Level 2</h3>
-                        <p class="text-gray-400 mb-4 leading-relaxed">Join us for an evening of dancing and socializing.</p>
+                        <p class="text-mutedsage mb-4 leading-relaxed">Join us for an evening of dancing and socializing.</p>
                     </div>
                 </div>
                 <div class="bg-white rounded-lg overflow-hidden shadow-lg" data-aos="zoom-in" data-aos-delay="200">
-                    <img src="http://static.photos/event/640x360/3" alt="Zouk festival" class="w-full h-48 object-cover">
+                    <img src="http://static.photos/event/640x360/3" alt="Dance festival" class="w-full h-48 object-cover">
                     <div class="p-6">
                         <div class="flex justify-between items-center mb-2">
-                            <span class="text-sm text-yellow-300 font-semibold">Wednesday</span>
-                            <span class="text-sm text-gray-300">9 p.m. - 10 p.m.</span>
+                            <span class="text-sm text-sage font-semibold">Wednesday</span>
+                            <span class="text-sm text-mutedsage">9 p.m. - 10 p.m.</span>
                         </div>
                         <h3 class="text-xl font-bold mb-2">Level 3</h3>
-                        <p class="text-gray-400 mb-4 leading-relaxed">Our annual celebration of Zouk with international instructors.</p>
+                        <p class="text-mutedsage mb-4 leading-relaxed">Our annual celebration of Zouk with international instructors.</p>
                     </div>
                 </div>
             </div>
             <div class="text-center mt-12">
-                <a href="{{ url_for('timetable_nonmembers') }}" class="px-8 py-3 bg-yellow-300 text-black font-bold rounded-full hover:bg-lime-300 transition duration-300 inline-block">View Timetable</a>
+                <a href="{{ url_for('timetable_nonmembers') }}" class="px-8 py-3 bg-energy text-charcoal font-bold rounded-full hover:bg-gold transition duration-300 inline-block">View Timetable</a>
             </div>
         </div>
     </section>
 
     <!-- Testimonials -->
-    <section class="py-20 bg-black">
+    <section class="py-20 bg-charcoal">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
-                <h2 class="text-3xl font-bold mb-4 text-yellow-300">What Our Dancers Say</h2>
-                <div class="w-24 h-1 bg-yellow-300 mx-auto"></div>
+                <h2 class="text-3xl font-bold mb-4 text-sage">What Our Dancers Say</h2>
+                <div class="w-24 h-1 bg-energy mx-auto"></div>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="bg-gray-900 p-8 rounded-lg" data-aos="fade-up">
+                <div class="bg-charcoal p-8 rounded-lg" data-aos="fade-up">
                     <div class="flex items-center mb-4">
                         <img src="{{ url_for('static', filename='debo_review.png') }}" alt="Testimonial" class="w-24 h-24 rounded-full mr-4">
                         <div>
-                            <h4 class="font-bold text-lime-500">Kaliya</h4>
-                            <p class="text-sm text-lime-500">Student for 3 months</p>
+                            <h4 class="font-bold text-gold">Kaliya</h4>
+                            <p class="text-sm text-gold">Student for 3 months</p>
                         </div>
                     </div>
-                    <p class="text-lime-300">"Zouk Motion transformed my dancing completely. The instructors are patient and knowledgeable, and the community is so welcoming!"</p>
-                    <div class="flex mt-4 text-yellow-400">
+                    <p class="text-gold">"ShreeFlows transformed my dancing completely. The instructors are patient and knowledgeable, and the community is so welcoming!"</p>
+                    <div class="flex mt-4 text-sage">
                         <i data-feather="star" class="w-4 h-4 fill-current"></i>
                         <i data-feather="star" class="w-4 h-4 fill-current"></i>
                         <i data-feather="star" class="w-4 h-4 fill-current"></i>
@@ -258,16 +280,16 @@
                         <i data-feather="star" class="w-4 h-4 fill-current"></i>
                     </div>
                 </div>
-                <div class="bg-gray-900 p-8 rounded-lg" data-aos="fade-up" data-aos-delay="100">
+                <div class="bg-charcoal p-8 rounded-lg" data-aos="fade-up" data-aos-delay="100">
                     <div class="flex items-center mb-4">
                         <img src="http://static.photos/people/200x200/2" alt="Testimonial" class="w-24 h-24 rounded-full mr-4">
                         <div>
-                            <h4 class="font-bold text-lime-500">Sally</h4>
-                            <p class="text-sm text-lime-500">Student for 1 year</p>
+                            <h4 class="font-bold text-gold">Sally</h4>
+                            <p class="text-sm text-gold">Student for 1 year</p>
                         </div>
                     </div>
-                    <p class="text-lime-300">"Matt is an incredible Zouk teacher! He’s very detail-oriented and really takes the time to break things down in a way that makes sense. His focus on the foundations helps students build strong technique and confidence on the dance floor. Whether you’re new to Zouk or looking to refine your skills, Matt creates a supportive and motivating environment that makes learning both fun and rewarding"</p>
-                    <div class="flex mt-4 text-yellow-400">
+                    <p class="text-gold">"Deboshree is an incredible Zouk teacher! She's very detail-oriented and really takes the time to break things down in a way that makes sense. Her focus on the foundations helps students build strong technique and confidence on the dance floor. Whether you're new to Zouk or looking to refine your skills, Deboshree creates a supportive and motivating environment that makes learning both fun and rewarding"</p>
+                    <div class="flex mt-4 text-sage">
                         <i data-feather="star" class="w-4 h-4 fill-current"></i>
                         <i data-feather="star" class="w-4 h-4 fill-current"></i>
                         <i data-feather="star" class="w-4 h-4 fill-current"></i>
@@ -275,16 +297,16 @@
                         <i data-feather="star" class="w-4 h-4 fill-current"></i>
                     </div>
                 </div>
-                <div class="bg-gray-900 p-8 rounded-lg" data-aos="fade-up" data-aos-delay="200">
+                <div class="bg-charcoal p-8 rounded-lg" data-aos="fade-up" data-aos-delay="200">
                     <div class="flex items-center mb-4">
                         <img src="http://static.photos/people/200x200/3" alt="Testimonial" class="w-24 h-24 rounded-full mr-4">
                         <div>
-                            <h4 class="font-bold text-lime-500">Noel</h4>
-                            <p class="text-sm text-lime-500">Student for 3 years</p>
+                            <h4 class="font-bold text-gold">Noel</h4>
+                            <p class="text-sm text-gold">Student for 3 years</p>
                         </div>
                     </div>
-                    <p class="text-lime-300">"The best dance school I've ever attended. The energy is amazing, and I've made so many friends through Zouk Motion."</p>
-                    <div class="flex mt-4 text-yellow-400">
+                    <p class="text-gold">"The best dance school I've ever attended. The energy is amazing, and I've made so many friends through ShreeFlows."</p>
+                    <div class="flex mt-4 text-sage">
                         <i data-feather="star" class="w-4 h-4 fill-current"></i>
                         <i data-feather="star" class="w-4 h-4 fill-current"></i>
                         <i data-feather="star" class="w-4 h-4 fill-current"></i>
@@ -299,56 +321,56 @@
     <!-- Call to Action -->
     <section class="py-20 hero-gradient text-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 class="text-3xl md:text-4xl font-bold mb-6 text-yellow-300">Ready to Start Your Zouk Journey?</h2>
-            <p class="text-xl mb-8 max-w-3xl mx-auto text-lime-300">Join our community of passionate dancers and experience the magic of Brazilian Zouk.</p>
+            <h2 class="text-3xl md:text-4xl font-bold mb-6 text-sage">Ready to Start Your Dance Journey?</h2>
+            <p class="text-xl mb-8 max-w-3xl mx-auto text-gold">Join our community of passionate dancers and experience the magic of Brazilian Zouk.</p>
             <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
-                <a href="{{ url_for('signup') }}" class="px-8 py-4 bg-black border-2 border-lime-300 text-yellow-300 font-bold rounded-full hover:bg-lime-300 hover:text-black transition duration-300">Book a Free Trial</a>
+                <a href="{{ url_for('signup') }}" class="px-8 py-4 bg-charcoal border-2 border-gold text-sage font-bold rounded-full hover:bg-gold hover:text-charcoal transition duration-300">Book a Free Trial</a>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer id="footer" class="bg-black text-white py-12">
+    <footer id="footer" class="bg-charcoal text-white py-12">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-center">
             
             <!-- Logo + About -->
             <div class="flex flex-col items-center mt-0">
-                <img class="h-20 w-auto" src="{{ url_for('static', filename='logo.png') }}" alt="Zouk Motion Logo" class="h-10 mb-4 mx-auto md:mx-0">
-                <p class="text-lime-300">Your go-to destination for Brazilian Zouk music, dance, and culture.</p>
+                <img class="h-20 w-auto" src="{{ url_for('static', filename='logo.png') }}" alt="ShreeFlows Logo" class="h-10 mb-4 mx-auto md:mx-0">
+                <p class="text-gold">Your go-to destination for dance and culture.</p>
                 <div class="flex space-x-4 mt-6 justify-center md:justify-start">
-                <a href="#" class="text-lime-300 hover:text-white"><i data-feather="facebook"></i></a>
-                <a href="#" class="text-lime-300 hover:text-white"><i data-feather="instagram"></i></a>
+                <a href="#" class="text-gold hover:text-white"><i data-feather="facebook"></i></a>
+                <a href="#" class="text-gold hover:text-white"><i data-feather="instagram"></i></a>
                 </div>
             </div>
 
             <!-- Quick Links -->
             <div>
-                <h3 class="text-yellow-300 font-semibold mb-4">Quick Links</h3>
+                <h3 class="text-sage font-semibold mb-4">Quick Links</h3>
                 <ul class="space-y-2">
-                <li><a href="{{ url_for('home') }}" class="text-lime-300 hover:text-white">Home</a></li>
-                <li><a href="#benefits" class="text-lime-300 hover:text-white">About Us</a></li>
-                <li><a href="timetable_nonmembers" class="text-lime-300 hover:text-white">Timetable</a></li>
-                <li><a href= "#upcoming-events" class="text-lime-300 hover:text-white">Events</a></li>
-                <li><a href="{{ url_for('pricing') }}" class="text-lime-300 hover:text-white">Pricing</a></li>
+                <li><a href="{{ url_for('home') }}" class="text-gold hover:text-white">Home</a></li>
+                <li><a href="#benefits" class="text-gold hover:text-white">About Us</a></li>
+                <li><a href="timetable_nonmembers" class="text-gold hover:text-white">Timetable</a></li>
+                <li><a href= "#upcoming-events" class="text-gold hover:text-white">Events</a></li>
+                <li><a href="{{ url_for('pricing') }}" class="text-gold hover:text-white">Pricing</a></li>
                 </ul>
             </div>
 
             <!-- Contact -->
             <div>
-                <h3 class="text-yellow-300 font-semibold mb-4">Contact</h3>
-                <ul class="space-y-2 text-lime-300">
+                <h3 class="text-sage font-semibold mb-4">Contact</h3>
+                <ul class="space-y-2 text-gold">
                 <li class="flex items-center justify-center md:justify-start">
                     <i data-feather="map-pin" class="w-4 h-4 mr-2"></i>
-                    <span>Zouk Motion Sydney, Australia</span>
+                    <span>ShreeFlows Sydney, Australia</span>
                 </li>
                 <li class="flex items-center justify-center md:justify-start">
                     <i data-feather="mail" class="w-4 h-4 mr-2"></i>
-                    <span>zoukmotionsyd@gmail.com</span>
+                    <span>bobohobo912@gmail.com</span>
                 </li>
                 <li class="flex items-center justify-center md:justify-start">
                     <i data-feather="phone" class="w-4 h-4 mr-2"></i>
-                    <span>+61 421 561 903</span>
+                    <span>+61 450 735 676</span>
                 </li>
                 </ul>
             </div>

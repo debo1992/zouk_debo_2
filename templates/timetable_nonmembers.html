@@ -3,8 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zouk Motion | Brazilian Zouk Dance Community</title>
+    <title>ShreeFlows | Brazilian Zouk Dance Community</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              charcoal: "#0F1217",
+              brandteal: "#0D5C63",
+              gold: "#C9A227",
+              energy: "#00B4D8",
+              brandpurple: "#4A2C7A",
+              sage: "#D3DFCF",
+            },
+          },
+        },
+      };
+    </script>
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="https://unpkg.com/feather-icons"></script>
@@ -13,7 +29,7 @@
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
         body {
             font-family: 'Poppins', sans-serif;
-            background-color: #000;
+            background-color: #0F1217;
             line-height: 1.6;
             color: #e2e8f0;
             overflow-x: hidden;
@@ -29,14 +45,14 @@
             margin-bottom: 1.5rem;
             font-size: 1.1rem;
         }
-        .text-lime-300 {
-            color: #c1ff72;
+        .text-gold {
+            color: #C9A227;
         }
         .hero-gradient {
-    background: linear-gradient( #000000 0%, #111827 100%);
+    background: #0F1217;
 }
         .nav-link:hover {
-            color: #FFD700;
+            color: #00B4D8;
             transform: translateY(-2px);
             transition: all 0.3s ease;
         }
@@ -54,55 +70,54 @@
     <!-- Swiper JS -->
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 </head>
-<body class="text-gray-800">
+<body class="text-gray-100">
     <!-- Navigation -->
-    <nav class="bg-black shadow-lg sticky top-0 z-50">
+    <nav class="bg-charcoal shadow-lg sticky top-0 z-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-26">
                 <div class="flex items-center">
                     <div class="flex flex-col items-center mt-6">
-                        <img class="h-12 w-auto" src="{{ url_for('static', filename='logo.png') }}" alt="Zouk Motion Logo">
+                        <img class="h-12 w-auto" src="{{ url_for('static', filename='logo.png') }}" alt="ShreeFlows Logo">
                         <span class="-mt-1 text-xl font-bold text-center">
-                            <span class="text-yellow-300">ZOUK</span> 
-                            <span class="text-lime-300">MOTION</span>
+                            <span class="text-sage">ShreeFlows</span>
                         </span>
                     </div>
                 </div>
                 <div class="hidden md:flex items-center space-x-8">
-                    <a href="{{ url_for('home') }}" class="nav-link px-3 py-2 text-sm font-medium text-lime-300 hover:text-yellow-300">Home</a>
-                    <a href="#benefits" class="nav-link px-3 py-2 text-sm font-medium text-lime-300 hover:text-yellow-300">About</a>
-                    <a href="{{ url_for('timetable') }}" class="nav-link px-3 py-2 text-sm font-medium text-lime-300 hover:text-yellow-300">Timetable</a>
-                    <a href="{{ url_for('pricing') }}" class="nav-link px-3 py-2 text-sm font-medium text-lime-300 hover:text-yellow-300">Plans & Pricing</a>
-                    <a href="#upcoming-events" class="nav-link px-3 py-2 text-sm font-medium text-lime-300 hover:text-yellow-300">Events</a>
+                    <a href="{{ url_for('home') }}" class="nav-link px-3 py-2 text-sm font-medium text-gold hover:text-sage">Home</a>
+                    <a href="#benefits" class="nav-link px-3 py-2 text-sm font-medium text-gold hover:text-sage">About</a>
+                    <a href="{{ url_for('timetable') }}" class="nav-link px-3 py-2 text-sm font-medium text-gold hover:text-sage">Timetable</a>
+                    <a href="{{ url_for('pricing') }}" class="nav-link px-3 py-2 text-sm font-medium text-gold hover:text-sage">Styles</a>
+                    <a href="#upcoming-events" class="nav-link px-3 py-2 text-sm font-medium text-gold hover:text-sage">Events</a>
                     
-                    <a href="#footer" class="nav-link px-3 py-2 text-sm font-medium text-lime-300 hover:text-yellow-300">Contact</a>
-                    <a href="{{ url_for('login') }}" class="px-4 py-2 text-sm font-medium text-black bg-yellow-300 rounded-md hover:bg-lime-300 transition duration-300">Login </a>
+                    <a href="#footer" class="nav-link px-3 py-2 text-sm font-medium text-gold hover:text-sage">Contact</a>
+                    <a href="{{ url_for('login') }}" class="px-4 py-2 text-sm font-medium text-charcoal bg-energy rounded-md hover:bg-gold transition duration-300">Login </a>
                 </div>
                 <div class="md:hidden flex items-center">
-                    <button id="menu-btn" class="text-gray-300 hover:text-gray-900 focus:outline-none">
+                    <button id="menu-btn" class="text-gray-300 hover:text-charcoal focus:outline-none">
                         <i data-feather="menu"></i>
                     </button>
                 </div>
             </div>
         </div>
         <!-- Mobile Dropdown Menu -->
-        <div id="mobile-menu" class="hidden md:hidden bg-black px-4 pt-4 pb-6 space-y-4">
-            <a href="{{ url_for('home') }}" class="block text-lime-300 hover:text-yellow-300">Home</a>
-            <a href="#benefits" class="block text-lime-300 hover:text-yellow-300">About</a>
-            <a href="{{ url_for('timetable') }}" class="block text-lime-300 hover:text-yellow-300">Timetable</a>
-            <a href="{{ url_for('pricing') }}" class="block text-lime-300 hover:text-yellow-300">Plans & Pricing</a>
-            <a href="#upcoming-events" class="block text-lime-300 hover:text-yellow-300">Events</a>
-            <a href="#footer" class="block text-lime-300 hover:text-yellow-300">Contact</a>
-            <a href="{{ url_for('login') }}" class="block px-4 py-2 bg-yellow-300 text-black font-bold rounded-md hover:bg-lime-300">Login</a>
+        <div id="mobile-menu" class="hidden md:hidden bg-charcoal px-4 pt-4 pb-6 space-y-4">
+            <a href="{{ url_for('home') }}" class="block text-gold hover:text-sage">Home</a>
+            <a href="#benefits" class="block text-gold hover:text-sage">About</a>
+            <a href="{{ url_for('timetable') }}" class="block text-gold hover:text-sage">Timetable</a>
+            <a href="{{ url_for('pricing') }}" class="block text-gold hover:text-sage">Styles</a>
+            <a href="#upcoming-events" class="block text-gold hover:text-sage">Events</a>
+            <a href="#footer" class="block text-gold hover:text-sage">Contact</a>
+            <a href="{{ url_for('login') }}" class="block px-4 py-2 bg-energy text-charcoal font-bold rounded-md hover:bg-gold">Login</a>
         </div>
     </nav>
 
     <div class="container mx-auto px-4 py-12 max-w-5xl">
-      <h1 class="text-4xl font-bold text-lime-300 mb-8 text-center">Class Timetable</h1>
+      <h1 class="text-4xl font-bold text-gold mb-8 text-center">Class Timetable</h1>
 
       <div class="overflow-x-auto rounded-lg shadow-lg border border-gray-700">
-        <table class="min-w-full bg-gray-900 text-white border-collapse">
-          <thead class="bg-black text-lime-300 border-b border-gray-700">
+        <table class="min-w-full bg-charcoal text-white border-collapse">
+          <thead class="bg-charcoal text-gold border-b border-gray-700">
             <tr>
               <th class="px-6 py-3 text-left text-sm font-semibold uppercase">Date</th>
               <th class="px-6 py-3 text-left text-sm font-semibold uppercase">Weekday</th>
@@ -114,12 +129,12 @@
           <tbody>
             {% for date in dates %}
             <tr class="border-b border-gray-700">
-              <td rowspan="3" class="px-6 py-4 align-top text-yellow-300 font-semibold">{{ date.pretty }}</td>
-              <td rowspan="3" class="px-6 py-4 align-top text-lime-300 font-medium">Wednesday</td>
+              <td rowspan="3" class="px-6 py-4 align-top text-sage font-semibold">{{ date.pretty }}</td>
+              <td rowspan="3" class="px-6 py-4 align-top text-gold font-medium">Wednesday</td>
               <td class="px-6 py-4">{{ slots[0][0] }}</td>
               <td class="px-6 py-4 text-gray-300">{{ slots[0][1] }}</td>
               <td class="px-6 py-4 text-center">
-                <a href="{{ url_for('signup') }}" class="bg-lime-300 hover:bg-yellow-300 text-black px-4 py-2 rounded-md font-semibold transition">Book Now</a>
+                <a href="{{ url_for('signup') }}" class="bg-gold hover:bg-energy text-charcoal px-4 py-2 rounded-md font-semibold transition">Book Now</a>
               </td>
             </tr>
 
@@ -127,7 +142,7 @@
               <td class="px-6 py-4">{{ slots[1][0] }}</td>
               <td class="px-6 py-4 text-gray-300">{{ slots[1][1] }}</td>
               <td class="px-6 py-4 text-center">
-                <a href="{{ url_for('signup') }}" class="bg-lime-300 hover:bg-yellow-300 text-black px-4 py-2 rounded-md font-semibold transition">Book Now</a>
+                <a href="{{ url_for('signup') }}" class="bg-gold hover:bg-energy text-charcoal px-4 py-2 rounded-md font-semibold transition">Book Now</a>
               </td>
             </tr>
 
@@ -135,7 +150,7 @@
               <td class="px-6 py-4">{{ slots[2][0] }}</td>
               <td class="px-6 py-4 text-gray-300">{{ slots[2][1] }}</td>
               <td class="px-6 py-4 text-center">
-                <a href="{{ url_for('signup') }}" class="bg-lime-300 hover:bg-yellow-300 text-black px-4 py-2 rounded-md font-semibold transition">Book Now</a>
+                <a href="{{ url_for('signup') }}" class="bg-gold hover:bg-energy text-charcoal px-4 py-2 rounded-md font-semibold transition">Book Now</a>
               </td>
             </tr>
             {% endfor %}
@@ -146,39 +161,39 @@
 
 
     <!-- Footer -->
-    <footer id="footer" class="bg-black text-white py-12">
+    <footer id="footer" class="bg-charcoal text-white py-12">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-center">
             
             <!-- Logo + About -->
             <div class="flex flex-col items-center mt-0">
-                <img class="h-20 w-auto" src="{{ url_for('static', filename='logo.png') }}" alt="Zouk Motion Logo" class="h-10 mb-4 mx-auto md:mx-0">
-                <p class="text-lime-300">Your go-to destination for Brazilian Zouk music, dance, and culture.</p>
+                <img class="h-20 w-auto" src="{{ url_for('static', filename='logo.png') }}" alt="ShreeFlows Logo" class="h-10 mb-4 mx-auto md:mx-0">
+                <p class="text-gold">Your go-to destination for Brazilian Zouk music, dance, and culture.</p>
                 <div class="flex space-x-4 mt-6 justify-center md:justify-start">
-                <a href="#" class="text-lime-300 hover:text-white"><i data-feather="facebook"></i></a>
-                <a href="#" class="text-lime-300 hover:text-white"><i data-feather="instagram"></i></a>
+                <a href="#" class="text-gold hover:text-white"><i data-feather="facebook"></i></a>
+                <a href="#" class="text-gold hover:text-white"><i data-feather="instagram"></i></a>
                 </div>
             </div>
 
             <!-- Quick Links -->
             <div>
-                <h3 class="text-yellow-300 font-semibold mb-4">Quick Links</h3>
+                <h3 class="text-sage font-semibold mb-4">Quick Links</h3>
                 <ul class="space-y-2">
-                <li><a href="{{ url_for('home') }}" class="text-lime-300 hover:text-white">Home</a></li>
-                <li><a href="#benefits" class="text-lime-300 hover:text-white">About Us</a></li>
-                <li><a href="timetable_nonmembers" class="text-lime-300 hover:text-white">Timetable</a></li>
-                <li><a href= "#upcoming-events" class="text-lime-300 hover:text-white">Events</a></li>
-                <li><a href="{{ url_for('pricing') }}" class="text-lime-300 hover:text-white">Pricing</a></li>
+                <li><a href="{{ url_for('home') }}" class="text-gold hover:text-white">Home</a></li>
+                <li><a href="#benefits" class="text-gold hover:text-white">About Us</a></li>
+                <li><a href="timetable_nonmembers" class="text-gold hover:text-white">Timetable</a></li>
+                <li><a href= "#upcoming-events" class="text-gold hover:text-white">Events</a></li>
+                <li><a href="{{ url_for('pricing') }}" class="text-gold hover:text-white">Pricing</a></li>
                 </ul>
             </div>
 
             <!-- Contact -->
             <div>
-                <h3 class="text-yellow-300 font-semibold mb-4">Contact</h3>
-                <ul class="space-y-2 text-lime-300">
+                <h3 class="text-sage font-semibold mb-4">Contact</h3>
+                <ul class="space-y-2 text-gold">
                 <li class="flex items-center justify-center md:justify-start">
                     <i data-feather="map-pin" class="w-4 h-4 mr-2"></i>
-                    <span>Zouk Motion Sydney, Australia</span>
+                    <span>ShreeFlows Sydney, Australia</span>
                 </li>
                 <li class="flex items-center justify-center md:justify-start">
                     <i data-feather="mail" class="w-4 h-4 mr-2"></i>

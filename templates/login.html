@@ -3,61 +3,76 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Zouk Motion Class Packages</title>
+  <title>ShreeFlows Class Packages</title>
   <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
   <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              charcoal: "#0F1217",
+              brandteal: "#0D5C63",
+              gold: "#C9A227",
+              energy: "#00B4D8",
+              brandpurple: "#4A2C7A",
+              sage: "#D3DFCF",
+            },
+          },
+        },
+      };
+    </script>
 </head>
-<body class="bg-black text-white">
+<body class="bg-charcoal text-white">
 
   <!-- NAV -->
-  <nav class="bg-black shadow-lg sticky top-0 z-50">
+  <nav class="bg-charcoal shadow-lg sticky top-0 z-50">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex justify-between h-26">
         <div class="flex items-center">
           <div class="flex flex-col items-center mt-6">
-              <img class="h-12 w-auto" src="{{ url_for('static', filename='logo.png') }}" alt="Zouk Motion Logo">
+              <img class="h-12 w-auto" src="{{ url_for('static', filename='logo.png') }}" alt="ShreeFlows Logo">
               <span class="-mt-1 text-xl font-bold text-center">
-                  <span class="text-yellow-300">ZOUK</span> 
-                  <span class="text-lime-300">MOTION</span>
+                  <span class="text-sage">ShreeFlows</span>
               </span>
           </div>
         </div>
         <div class="hidden md:flex items-center space-x-8">
-          <a href="{{ url_for('home') }}" class="nav-link px-3 py-2 text-sm font-medium text-lime-300 hover:text-yellow-300">Home</a>
-          <a href="{{ url_for('home') }}#benefits" class="nav-link px-3 py-2 text-sm font-medium text-lime-300 hover:text-yellow-300">About</a>
-          <a href="{{ url_for('timetable') }}" class="nav-link px-3 py-2 text-sm font-medium text-lime-300 hover:text-yellow-300">Timetable</a>
-          <a href="{{ url_for('pricing') }}" class="nav-link px-3 py-2 text-sm font-medium text-lime-300 hover:text-yellow-300">Plans & Pricing</a>
-          <a href="{{ url_for('home') }}#upcoming-events" class="nav-link px-3 py-2 text-sm font-medium text-lime-300 hover:text-yellow-300">Events</a>
-          <a href="{{ url_for('home') }}#footer" class="nav-link px-3 py-2 text-sm font-medium text-lime-300 hover:text-yellow-300">Contact</a>
-          <a href="#" class="px-4 py-2 text-sm font-medium text-black bg-yellow-300 rounded-md hover:bg-lime-300 transition duration-300">Login</a>
+          <a href="{{ url_for('home') }}" class="nav-link px-3 py-2 text-sm font-medium text-gold hover:text-sage">Home</a>
+          <a href="{{ url_for('home') }}#benefits" class="nav-link px-3 py-2 text-sm font-medium text-gold hover:text-sage">About</a>
+          <a href="{{ url_for('timetable') }}" class="nav-link px-3 py-2 text-sm font-medium text-gold hover:text-sage">Timetable</a>
+          <a href="{{ url_for('pricing') }}" class="nav-link px-3 py-2 text-sm font-medium text-gold hover:text-sage">Styles</a>
+          <a href="{{ url_for('home') }}#upcoming-events" class="nav-link px-3 py-2 text-sm font-medium text-gold hover:text-sage">Events</a>
+          <a href="{{ url_for('home') }}#footer" class="nav-link px-3 py-2 text-sm font-medium text-gold hover:text-sage">Contact</a>
+          <a href="#" class="px-4 py-2 text-sm font-medium text-charcoal bg-energy rounded-md hover:bg-gold transition duration-300">Login</a>
         </div>
       </div>
     </div>  
   </nav>
   <br><br>
-<div class="min-h-screen flex flex-col justify-center items-center bg-black text-center">
-    <div class="bg-gray-900 p-8 rounded-2xl shadow-lg w-full max-w-md">
-        <h2 class="text-lime-300 font-semibold mb-8 text-lg">Login to Zouk Motion!</h2>
+<div class="min-h-screen flex flex-col justify-center items-center bg-charcoal text-center">
+    <div class="bg-brandteal p-8 rounded-2xl shadow-lg w-full max-w-md">
+        <h2 class="text-gold font-semibold mb-8 text-lg">Login to ShreeFlows!</h2>
 
         <form method="POST" class="space-y-4">
             <div>
-                <label class="block mb-1 text-yellow-300">Email:</label>
-                <input type="text" name="email" required class="text-black bg-white p-2 rounded w-full">
+                <label class="block mb-1 text-sage">Email:</label>
+                <input type="text" name="email" required class="text-charcoal bg-white p-2 rounded w-full">
             </div>
 
             <div>
-                <label class="block mb-1 text-yellow-300">Password:</label>
-                <input type="password" name="password" required class="text-black bg-white p-2 rounded w-full">
+                <label class="block mb-1 text-sage">Password:</label>
+                <input type="password" name="password" required class="text-charcoal bg-white p-2 rounded w-full">
             </div>
 
-            <button type="submit" class="px-6 py-3 text-sm font-medium text-black bg-yellow-300 rounded-md hover:bg-lime-300 transition duration-300 w-full">
+            <button type="submit" class="px-6 py-3 text-sm font-medium text-charcoal bg-energy rounded-md hover:bg-gold transition duration-300 w-full">
                 Login
             </button>
         </form>
 
         <p class="mt-4 text-gray-300">
             Don't have an account?
-            <a href="{{ url_for('signup') }}" class="text-yellow-300 hover:text-lime-300 font-semibold">Sign up</a>
+            <a href="{{ url_for('signup') }}" class="text-sage hover:text-gold font-semibold">Sign up</a>
         </p>
     </div>
 </div>

@@ -3,8 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zouk Motion | Brazilian Zouk Dance Community</title>
+    <title>ShreeFlows | Brazilian Zouk Dance Community</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              charcoal: "#0F1217",
+              brandteal: "#0D5C63",
+              gold: "#C9A227",
+              energy: "#00B4D8",
+              brandpurple: "#4A2C7A",
+              sage: "#D3DFCF",
+            },
+          },
+        },
+      };
+    </script>
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="https://unpkg.com/feather-icons"></script>
@@ -13,7 +29,7 @@
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
         body {
             font-family: 'Poppins', sans-serif;
-            background-color: #000;
+            background-color: #0F1217;
             line-height: 1.6;
             color: #e2e8f0;
             overflow-x: hidden;
@@ -29,14 +45,14 @@
             margin-bottom: 1.5rem;
             font-size: 1.1rem;
         }
-        .text-lime-300 {
-            color: #c1ff72;
+        .text-gold {
+            color: #C9A227;
         }
         .hero-gradient {
-    background: linear-gradient( #000000 0%, #111827 100%);
+    background: #0F1217;
 }
         .nav-link:hover {
-            color: #FFD700;
+            color: #00B4D8;
             transform: translateY(-2px);
             transition: all 0.3s ease;
         }
@@ -46,31 +62,30 @@
         }
     </style>
 </head>
-<body class="text-gray-800">
+<body class="text-gray-100">
     <!-- Navigation -->
-    <nav class="bg-black shadow-lg sticky top-0 z-50">
+    <nav class="bg-charcoal shadow-lg sticky top-0 z-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-26">
                 <div class="flex items-center">
                     <div class="flex flex-col items-center mt-6">
-                      <img class="h-12 w-auto" src="{{ url_for('static', filename='logo.png') }}" alt="Zouk Motion Logo">
+                      <img class="h-12 w-auto" src="{{ url_for('static', filename='logo.png') }}" alt="ShreeFlows Logo">
                       <span class="-mt-1 text-xl font-bold text-center">
-                          <span class="text-yellow-300">ZOUK</span> 
-                          <span class="text-lime-300">MOTION</span>
+                          <span class="text-sage">ShreeFlows</span>
                       </span>
                   </div>
                 </div>
                 <div class="hidden md:flex items-center space-x-8">
-                    <a href="{{ url_for('home') }}" class="nav-link px-3 py-2 text-sm font-medium text-lime-300 hover:text-yellow-300">Home</a>
-                    <a href="{{ url_for('dashboard') }}" class="nav-link px-3 py-2 text-sm font-medium text-lime-300 hover:text-yellow-300">Dashboard</a>
-                    <a href="{{ url_for('timetable') }}" class="nav-link px-3 py-2 text-sm font-medium text-lime-300 hover:text-yellow-300">Timetable</a>
-                    <a href="{{ url_for('pricing') }}" class="nav-link px-3 py-2 text-sm font-medium text-lime-300 hover:text-yellow-300">Plans & Pricing</a>
-                    <a href="{{ url_for('home') }}#upcoming-events" class="nav-link px-3 py-2 text-sm font-medium text-lime-300 hover:text-yellow-300">Events</a>                  
-                    <a href="{{ url_for('home') }}#footer" class="nav-link px-3 py-2 text-sm font-medium text-lime-300 hover:text-yellow-300">Contact</a>
-                    <a href="{{ url_for('logout') }}" class="px-4 py-2 text-sm font-medium text-black bg-yellow-300 rounded-md hover:bg-lime-300 transition duration-300">Logout </a>
+                    <a href="{{ url_for('home') }}" class="nav-link px-3 py-2 text-sm font-medium text-gold hover:text-sage">Home</a>
+                    <a href="{{ url_for('dashboard') }}" class="nav-link px-3 py-2 text-sm font-medium text-gold hover:text-sage">Dashboard</a>
+                    <a href="{{ url_for('timetable') }}" class="nav-link px-3 py-2 text-sm font-medium text-gold hover:text-sage">Timetable</a>
+                    <a href="{{ url_for('pricing') }}" class="nav-link px-3 py-2 text-sm font-medium text-gold hover:text-sage">Styles</a>
+                    <a href="{{ url_for('home') }}#upcoming-events" class="nav-link px-3 py-2 text-sm font-medium text-gold hover:text-sage">Events</a>                  
+                    <a href="{{ url_for('home') }}#footer" class="nav-link px-3 py-2 text-sm font-medium text-gold hover:text-sage">Contact</a>
+                    <a href="{{ url_for('logout') }}" class="px-4 py-2 text-sm font-medium text-charcoal bg-energy rounded-md hover:bg-gold transition duration-300">Logout </a>
                 </div>
                 <div class="md:hidden flex items-center">
-                    <button class="text-gray-500 hover:text-gray-900 focus:outline-none">
+                    <button class="text-gray-500 hover:text-charcoal focus:outline-none">
                         <i data-feather="menu"></i>
                     </button>
                 </div>
@@ -78,13 +93,13 @@
         </div>
     </nav>
     <br><br>
-<h2 class="text-3xl font-bold text-lime-300 mt-12 mb-4 text-center">Your Timetable</h2>
+<h2 class="text-3xl font-bold text-gold mt-12 mb-4 text-center">Your Timetable</h2>
 <h3 class="text-lg text-gray-300 mb-8 text-center">You have {{ remaining_classes }} remaining classes</h3>
 
 <div class="overflow-x-auto">
-  <table class="w-full border-collapse bg-gray-900 rounded-xl shadow-lg overflow-hidden">
+  <table class="w-full border-collapse bg-charcoal rounded-xl shadow-lg overflow-hidden">
     <thead>
-      <tr class="bg-gradient-to-r from-yellow-300 to-lime-300 text-black text-sm md:text-base">
+      <tr class="bg-gradient-to-r from-energy to-gold text-charcoal text-sm md:text-base">
         <th class="px-4 py-3">Date</th>
         <th class="px-4 py-3">Zouk Fundamentals <br> <span class="text-xs">7 p.m. - 8 p.m.</span></th>
         <th class="px-4 py-3">Level 2 <br> <span class="text-xs">8 p.m. - 9 p.m.</span></th>
@@ -93,7 +108,7 @@
     </thead>
     <tbody>
       {% for date in dates %}
-      <tr class="border-b border-gray-700 hover:bg-gray-800 transition">
+      <tr class="border-b border-gray-700 hover:bg-brandteal transition">
         <td class="px-4 py-3 font-medium text-gray-200 text-center">{{ date.pretty }}</td>
         {% for slot in ["19:00", "20:00", "21:00"] %}
         <td class="px-4 py-3 text-center">
@@ -116,7 +131,7 @@
               <input type="hidden" name="date" value="{{ date.raw }}">
               <input type="hidden" name="time" value="{{ slot }}">
               <button type="submit" 
-                class="bg-lime-300 hover:bg-yellow-300 text-black px-4 py-2 rounded-md text-sm font-semibold shadow-md transition">
+                class="bg-gold hover:bg-energy text-charcoal px-4 py-2 rounded-md text-sm font-semibold shadow-md transition">
                 Book
               </button>
             </form>

@@ -1,5 +1,5 @@
 For demo visit : debo-zouks.onrender.com
-Zouk Motion is a sleek and user-friendly web application designed to simplify dance class bookings and membership management for enthusiasts and instructors alike.
+ShreeFlows is a sleek and user-friendly web application designed to simplify dance class bookings and membership management for enthusiasts and instructors alike.
 The platform offers a seamless experience to browse class packages, reserve spots, and manage user accounts all in one place. This is a work in progress.
 
 Key Features:
