@@ -227,18 +227,18 @@ def book_class():
 
     now = datetime.now(TZ)
     if class_dt <= now:
-        flash("Cannot book a class that has already started or is in the past.")
+        flash("Cannot book a session that has already started or is in the past.")
         return redirect(url_for("timetable"))
 
     # Prevent duplicate booking
     existing = Booking.query.filter_by(user_id=user.id, date=date, time=time).first()
     if existing:
-        flash("You already booked this class.")
+        flash("You already booked this session.")
         return redirect(url_for("timetable"))
 
     # Only allow booking if credits remain
     if user.remaining_classes <= 0:
-        flash("No remaining classes to book.")
+        flash("No remaining sessions to book.")
         return redirect(url_for("timetable"))
 
     # Create booking
@@ -276,7 +276,7 @@ def cancel_class():
 
     now = datetime.now(TZ)
     if class_dt - now <= timedelta(hours=CANCEL_CUTOFF_HOURS):
-        flash(f"Too late to cancel this class (must cancel at least {CANCEL_CUTOFF_HOURS} hour(s) before start).")
+        flash(f"Too late to cancel this session (must cancel at least {CANCEL_CUTOFF_HOURS} hour(s) before start).")
         return redirect(url_for("timetable"))
 
     # Delete the booking and refund credit
@@ -392,10 +392,10 @@ def update_class_credit(user_id):
             new_value = int(request.form.get('remaining_classes', user.remaining_classes))
             user.remaining_classes = max(0, new_value)
         except ValueError:
-            flash("Invalid number entered for class credits.")
+            flash("Invalid number entered for session credits.")
 
     db.session.commit()
-    flash(f"Updated class credits for {user.name}: {user.remaining_classes}")
+    flash(f"Updated session credits for {user.name}: {user.remaining_classes}")
     return redirect(url_for('dashboard'))
 
 
@@ -434,9 +434,9 @@ def remove_class_credit(user_id):
     if user.remaining_classes > 0:
         user.remaining_classes -= 1
         db.session.commit()
-        flash(f"Removed 1 class credit from {user.name}. Remaining: {user.remaining_classes}")
+        flash(f"Removed 1 session credit from {user.name}. Remaining: {user.remaining_classes}")
     else:
-        flash(f"{user.name} has no remaining classes to remove.")
+        flash(f"{user.name} has no remaining sessions to remove.")
     return redirect(url_for('dashboard'))
 
 
